@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_controller.dart';
+part of 'loja_controller.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $HomeController = BindInject(
-  (i) => HomeController(),
+final $LojaController = BindInject(
+  (i) => LojaController(),
   singleton: true,
   lazy: true,
 );
@@ -18,8 +18,8 @@ final $HomeController = BindInject(
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$HomeController on _HomeControllerBase, Store {
-  final _$valueAtom = Atom(name: '_HomeControllerBase.value');
+mixin _$LojaController on _LojaControllerBase, Store {
+  final _$valueAtom = Atom(name: '_LojaControllerBase.value');
 
   @override
   int get value {
@@ -34,28 +34,28 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$_HomeControllerBaseActionController =
-      ActionController(name: '_HomeControllerBase');
+  final _$_LojaControllerBaseActionController =
+      ActionController(name: '_LojaControllerBase');
 
   @override
   void increment() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.increment');
+    final _$actionInfo = _$_LojaControllerBaseActionController.startAction(
+        name: '_LojaControllerBase.increment');
     try {
       return super.increment();
     } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+      _$_LojaControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic logOff() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.logOff');
+    final _$actionInfo = _$_LojaControllerBaseActionController.startAction(
+        name: '_LojaControllerBase.logOff');
     try {
       return super.logOff();
     } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+      _$_LojaControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

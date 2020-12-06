@@ -19,14 +19,16 @@ abstract class _AuthControllerBase with Store {
     status = user == null ? AuthStatus.logoff : AuthStatus.login;
   }
 
+  @action
   _AuthControllerBase() {
     _authRepository.getUser().then(setUser);
   }
-
+  @action
   Future loginWithGoogle() async {
     user = await _authRepository.getGoogleLogin();
   }
 
+  @action
   Future logOut() {
     return _authRepository.getLogOut();
   }

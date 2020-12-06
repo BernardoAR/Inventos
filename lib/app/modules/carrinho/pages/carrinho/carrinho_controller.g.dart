@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_controller.dart';
+part of 'carrinho_controller.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $HomeController = BindInject(
-  (i) => HomeController(),
+final $CarrinhoController = BindInject(
+  (i) => CarrinhoController(),
   singleton: true,
   lazy: true,
 );
@@ -18,8 +18,8 @@ final $HomeController = BindInject(
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$HomeController on _HomeControllerBase, Store {
-  final _$valueAtom = Atom(name: '_HomeControllerBase.value');
+mixin _$CarrinhoController on _CarrinhoControllerBase, Store {
+  final _$valueAtom = Atom(name: '_CarrinhoControllerBase.value');
 
   @override
   int get value {
@@ -34,28 +34,17 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$_HomeControllerBaseActionController =
-      ActionController(name: '_HomeControllerBase');
+  final _$_CarrinhoControllerBaseActionController =
+      ActionController(name: '_CarrinhoControllerBase');
 
   @override
   void increment() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.increment');
+    final _$actionInfo = _$_CarrinhoControllerBaseActionController.startAction(
+        name: '_CarrinhoControllerBase.increment');
     try {
       return super.increment();
     } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic logOff() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.logOff');
-    try {
-      return super.logOff();
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+      _$_CarrinhoControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
