@@ -30,12 +30,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               Modular.link.popAndPushNamed('/carrinho');
             })
       ]),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Modular.to.pushReplacementNamed('/carrinho');
-        },
-        child: Icon(Icons.shopping_cart),
-      ),
       body: Observer(
         builder: (_) {
           return GridView.builder(
