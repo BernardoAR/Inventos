@@ -1,24 +1,17 @@
-import 'package:inventos/app/shared/auth/auth_controller.dart';
+import 'package:inventos/app/shared/produto_lista/produto_lista_controller.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 part 'home_controller.g.dart';
 
 @Injectable()
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
+  ProdutoListaController produto = Modular.get();
   @observable
-  int value = 0;
-
+  List produtos;
   @action
-  void increment() {
-    value++;
-  }
-
-  @action
-  logOff() {
-    Modular.get<AuthController>().logOut();
-    Modular.to.pushReplacementNamed('/login');
+  Future listarProdutos() async {
+    produtos = await produto.getListaProdutos();
   }
 }

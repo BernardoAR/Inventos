@@ -31,6 +31,7 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  flutter_signin_button: ^1.1.0
   http: ^0.12.2
   firebase_core: ^0.5.2+1
   dio: ^3.0.10

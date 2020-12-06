@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,9 +24,21 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       ),
       body: Column(
         children: <Widget>[
-          RaisedButton(
+          TextFormField(
+            decoration: InputDecoration(labelText: 'E-mail'),
+          ),
+          TextFormField(
+            decoration: InputDecoration(labelText: 'Senha'),
+          ),
+          SignInButton(
+            Buttons.Email,
+            text: "Entrar com o email",
             onPressed: controller.loginWithGoogle,
-            child: Text('Login with Google'),
+          ),
+          SignInButton(
+            Buttons.Google,
+            text: "Entrar com o Google",
+            onPressed: controller.loginWithGoogle,
           )
         ],
       ),

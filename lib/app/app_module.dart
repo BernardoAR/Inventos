@@ -1,3 +1,4 @@
+import 'package:inventos/app/modules/carrinho/pages/carrinho/carrinho_module.dart';
 import 'package:inventos/app/shared/produto_lista/produto_lista_controller.dart';
 import 'package:inventos/app/shared/produto_lista/repositories/produto_lista_repository.dart';
 import 'package:inventos/app/shared/produto_lista/repositories/produto_lista_repository_interface.dart';
@@ -45,7 +46,7 @@ class AppModule extends MainModule {
         ModularRouter('/login',
             module: LoginModule(), transition: TransitionType.noTransition),
         ModularRouter('/home', module: HomeModule()),
-        ModularRouter('/loja', module: LojaModule()),
+        ModularRouter('/carrinho', module: CarrinhoModule()),
         ModularRouter('/detalhes_produto', module: DetalhesProdutoModule()),
         ModularRouter('/produto', module: ProdutoModule()),
       ];

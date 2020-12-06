@@ -19,50 +19,33 @@ final $HomeController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
-  final _$valueAtom = Atom(name: '_HomeControllerBase.value');
+  final _$produtosAtom = Atom(name: '_HomeControllerBase.produtos');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  List<dynamic> get produtos {
+    _$produtosAtom.reportRead();
+    return super.produtos;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set produtos(List<dynamic> value) {
+    _$produtosAtom.reportWrite(value, super.produtos, () {
+      super.produtos = value;
     });
   }
 
-  final _$_HomeControllerBaseActionController =
-      ActionController(name: '_HomeControllerBase');
+  final _$listarProdutosAsyncAction =
+      AsyncAction('_HomeControllerBase.listarProdutos');
 
   @override
-  void increment() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic logOff() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.logOff');
-    try {
-      return super.logOff();
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
+  Future<dynamic> listarProdutos() {
+    return _$listarProdutosAsyncAction.run(() => super.listarProdutos());
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+produtos: ${produtos}
     ''';
   }
 }
