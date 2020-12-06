@@ -10,12 +10,13 @@ class ProdutoListaRepository implements IProdutoListaRepository {
   Future getProdutos() async {
     var url = 'http://192.168.0.108/produto/pegaprodutos';
     var response = await http.get(url);
-    List parsedList = jsonDecode(response.body);
-    print(parsedList);
-    print(parsedList[0].usuarioModel);
-    // Todo: Continuar daqui
-    // List<ProdutoModel> list =
-    //     parsedList.map((val) => SignUpResponse.fromJson(val)).toList();
-    return parsedList;
+    List<ProdutoModel> lista = [];
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      for (var i = 0; i < data.length; i++) {
+        lista.add(ProdutoModel.fromJson(data[i]));
+      }
+    }
+    return lista;
   }
 }

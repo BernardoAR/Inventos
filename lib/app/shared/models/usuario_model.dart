@@ -6,4 +6,10 @@ class UsuarioModel {
   final TipoUsuarioModel tipoUsuario;
 
   UsuarioModel({this.uid, this.nome, this.tipoUsuario});
+  factory UsuarioModel.fromJson(dynamic json) {
+    return UsuarioModel(
+        uid: json['uid'],
+        nome: json['nome'],
+        tipoUsuario: TipoUsuarioModel.fromJson(json['tipoUsuario']));
+  }
 }

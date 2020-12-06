@@ -2,7 +2,7 @@ import 'package:inventos/app/shared/models/usuario_model.dart';
 
 class ProdutoModel {
   final int id;
-  final bool ativo;
+  final int ativo;
   final String titulo;
   final String url;
   final String descricao;
@@ -20,5 +20,15 @@ class ProdutoModel {
       this.quantidade,
       this.usuario});
 
-  static fromJson(val) {}
+  factory ProdutoModel.fromJson(dynamic json) {
+    return ProdutoModel(
+        ativo: int.parse(json['ativo']),
+        descricao: json['descricao'],
+        id: int.parse(json['id']),
+        precoUnitario: double.parse(json['precoUnitario']),
+        quantidade: int.parse(json['quantidade']),
+        titulo: json['titulo'] as String,
+        url: json['url'] as String,
+        usuario: UsuarioModel.fromJson(json['usuario']));
+  }
 }
