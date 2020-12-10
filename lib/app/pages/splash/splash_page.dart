@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:inventos/app/shared/Constants/constants_gradient.dart';
 import 'package:inventos/app/shared/auth/auth_controller.dart';
+import 'package:inventos/app/shared/Constants/constants.dart' as constants;
 import 'package:mobx/mobx.dart';
 import 'splash_controller.dart';
 
@@ -41,10 +43,11 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(child: CircularProgressIndicator()));
+    return Container(
+      child: Center(child: CircularProgressIndicator()),
+      decoration: BoxDecoration(
+        gradient: gradienteCimaBaixo,
+      ),
+    );
   }
 }
