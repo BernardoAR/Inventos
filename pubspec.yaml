@@ -1,5 +1,5 @@
 name: inventos
-description: A new Flutter project.
+description: Um aplicativo para serviços especializados em eventos.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -31,6 +31,7 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  flutter_launcher_icons: ^0.8.1
   flutter_signin_button: ^1.1.0
   http: ^0.12.2
   firebase_core: ^0.5.2+1
@@ -53,7 +54,14 @@ dev_dependencies:
   build_runner: ^1.10.1
   flutter_test:
     sdk: flutter
-
+# Ícones do aplicativo
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: 'assets/icon/icon.png'
+  image_path_android: 'assets/icon/icon.png'
+  adaptive_icon_background: 'assets/icon/background.png'
+  adaptive_icon_foreground: 'assets/icon/foreground.png'
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
