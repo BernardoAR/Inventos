@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_signin_button/button_builder.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'login_controller.dart';
 import 'package:inventos/app/shared/Constants/constants.dart' as constants;
 import 'package:inventos/app/shared/Constants/constants_gradient.dart'
@@ -40,24 +37,19 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             ),
             TextFormField(
               decoration: InputDecoration(
-                  labelText: 'E-mail', filled: true, fillColor: Colors.white),
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'E-mail',
+                  filled: true,
+                  fillColor: Colors.white),
             ),
             SizedBox(height: mediaQuery.size.height * 0.01),
             TextFormField(
               decoration: InputDecoration(
-                  labelText: 'Senha', filled: true, fillColor: Colors.white),
+                  prefixIcon: Icon(Icons.lock),
+                  labelText: 'Senha',
+                  filled: true,
+                  fillColor: Colors.white),
             ),
-
-            GestureDetector(
-              onTap: () {
-                Modular.to.pushReplacementNamed('/esqueceuasenha');
-              },
-              child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                Text("Esqueceu a Senha?", style: TextStyle(color: Colors.blue))
-              ]),
-            ),
-            SizedBox(height: mediaQuery.size.height * 0.05),
-            // Logar com e-mail
             RaisedButton(
               onPressed: controller.loginWithEmail,
               child: Row(
@@ -65,7 +57,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 children: [
                   Padding(
                     child: Icon(
-                      Icons.email,
+                      Icons.send,
                       size: 20,
                       color: Colors.white,
                     ),
@@ -81,6 +73,17 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               ),
               color: Colors.grey[700],
             ),
+            GestureDetector(
+              onTap: () {
+                Modular.to.pushReplacementNamed('/esqueceuasenha');
+              },
+              child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                Text("Esqueceu a Senha?", style: TextStyle(color: Colors.blue))
+              ]),
+            ),
+            SizedBox(height: mediaQuery.size.height * 0.05),
+            // Logar com e-mail
+
             // Logar com Google
             RaisedButton(
               onPressed: controller.loginWithGoogle,
