@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "189605864890-0kslukhc4a1inemgulnp43ova6jg6pb2.apps.googleusercontent.com",
+          "client_id": "189605864890-5spe13re91pgh5t7ju77ca64qdf6d1ei.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.inventos",
-            "certificate_hash": "6ed17de20165d53d90fb65e5db197b55fd3240c0"
+            "certificate_hash": "f4d93fae76c5b1d13a3ff39623a595c1c6ad57d7"
           }
         },
         {

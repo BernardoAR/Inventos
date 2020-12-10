@@ -5,5 +5,5 @@ const LinearGradient gradienteCimaBaixo = LinearGradient(
     colors: [constants.primaryColor, constants.secondaryColor],
     begin: Alignment.topRight,
     end: Alignment.bottomLeft);
-const LinearGradient gradienteDireitaEsquerda =
+const LinearGradient gradienteEsquerdaDireita =
     LinearGradient(colors: [constants.primaryColor, constants.secondaryColor]);
