@@ -22,4 +22,15 @@ abstract class _LoginControllerBase with Store {
       loading = false;
     }
   }
+
+  @action
+  Future loginWithEmail() async {
+    try {
+      loading = true;
+      await auth.loginWithGoogle();
+      Modular.to.pushReplacementNamed('/home');
+    } catch (e) {
+      loading = false;
+    }
+  }
 }

@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:inventos/app/shared/Constants/constants_gradient.dart';
+import 'package:inventos/app/shared/Constants/constants_gradient.dart'
+    as constantsGradient;
 import 'package:inventos/app/shared/auth/auth_controller.dart';
-import 'package:inventos/app/shared/Constants/constants.dart' as constants;
 import 'package:mobx/mobx.dart';
 import 'splash_controller.dart';
 
@@ -43,10 +43,23 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     return Container(
-      child: Center(child: CircularProgressIndicator()),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/logo.png',
+            height: mediaQuery.size.height * 0.2,
+            width: mediaQuery.size.width * 0.8,
+            fit: BoxFit.contain,
+          ),
+          CircularProgressIndicator()
+        ],
+      ),
       decoration: BoxDecoration(
-        gradient: gradienteCimaBaixo,
+        gradient: constantsGradient.gradienteCimaBaixo,
       ),
     );
   }
