@@ -1,3 +1,4 @@
+import 'shared/widgets/carrinho/carrinho_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/app_widget.dart';
@@ -12,6 +13,7 @@ import 'package:inventos/app/shared/produto_lista/produto_lista_controller.dart'
 import 'package:inventos/app/shared/produto_lista/repositories/produto_lista_repository.dart';
 import 'package:inventos/app/shared/produto_lista/repositories/produto_lista_repository_interface.dart';
 import 'package:inventos/app/shared/store/carrinho_store.dart';
+import 'package:inventos/app/shared/widgets/pesquisa/pesquisa_controller.dart';
 
 import 'app_controller.dart';
 import 'modules/carrinho/widgets/carrinho_lista_produtos/carrinho_lista_produtos/carrinho_lista_produtos_controller.dart';
@@ -24,6 +26,7 @@ import 'shared/auth/repositories/auth_repository_interface.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        $CarrinhoController,
         $CarrinhoTotalController,
         $CarrinhoListaProdutosController,
         $CarrinhoListaProdutosController,
@@ -34,7 +37,8 @@ class AppModule extends MainModule {
         Bind((i) => AuthController()),
         Bind((i) => ProdutoController()),
         Bind((i) => ProdutoListaController()),
-        Bind((i) => CarrinhoStore())
+        Bind((i) => CarrinhoStore()),
+        Bind((i) => PesquisaController())
       ];
 
   @override

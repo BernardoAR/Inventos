@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_bar_controller.dart';
+part of 'carrinho_controller.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $AppBarController = BindInject(
-  (i) => AppBarController(),
+final $CarrinhoController = BindInject(
+  (i) => CarrinhoController(),
   singleton: true,
   lazy: true,
 );
@@ -18,8 +18,8 @@ final $AppBarController = BindInject(
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AppBarController on _AppBarControllerBase, Store {
-  final _$valueAtom = Atom(name: '_AppBarControllerBase.value');
+mixin _$CarrinhoController on _CarrinhoControllerBase, Store {
+  final _$valueAtom = Atom(name: '_CarrinhoControllerBase.value');
 
   @override
   int get value {
@@ -34,17 +34,17 @@ mixin _$AppBarController on _AppBarControllerBase, Store {
     });
   }
 
-  final _$_AppBarControllerBaseActionController =
-      ActionController(name: '_AppBarControllerBase');
+  final _$_CarrinhoControllerBaseActionController =
+      ActionController(name: '_CarrinhoControllerBase');
 
   @override
   void increment() {
-    final _$actionInfo = _$_AppBarControllerBaseActionController.startAction(
-        name: '_AppBarControllerBase.increment');
+    final _$actionInfo = _$_CarrinhoControllerBaseActionController.startAction(
+        name: '_CarrinhoControllerBase.increment');
     try {
       return super.increment();
     } finally {
-      _$_AppBarControllerBaseActionController.endAction(_$actionInfo);
+      _$_CarrinhoControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

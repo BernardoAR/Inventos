@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/Constants/constants_gradient.dart'
     as constantsGradient;
+import 'package:inventos/app/shared/widgets/pesquisa/campo_pesquisa/campo_pesquisa_widget.dart';
+import 'package:inventos/app/shared/widgets/pesquisa/campo_pesquisa_acoes/campo_pesquisa_acoes_widget.dart';
+import 'package:inventos/app/shared/widgets/pesquisa/pesquisa_controller.dart';
 
 class AppBarWidget extends StatefulWidget with PreferredSizeWidget {
-  final String titulo;
-
-  const AppBarWidget({Key key, @required this.titulo}) : super(key: key);
   @override
   _AppBarWidgetState createState() => _AppBarWidgetState();
 
@@ -14,19 +14,14 @@ class AppBarWidget extends StatefulWidget with PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(56.0);
 }
 
-class _AppBarWidgetState extends State<AppBarWidget> {
+class _AppBarWidgetState
+    extends ModularState<AppBarWidget, PesquisaController> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
-      title: Text(widget.titulo),
-      actions: <Widget>[
-        IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Modular.link.popAndPushNamed('/carrinho');
-            })
-      ],
+      title: controller.estaPesquisando ? CampoPesquisaWidget() : Container(),
+      leading: controller.estaPesquisando ? const BackButton() : Container(),
+      actions: <Widget>[CampoPesquisaAcoesWidget()],
       flexibleSpace: Container(
         decoration:
             BoxDecoration(gradient: constantsGradient.gradienteEsquerdaDireita),

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:inventos/app/shared/Constants/constants.dart';
 import 'package:inventos/app/shared/models/produto_model.dart';
 import 'package:inventos/app/shared/produto_lista/repositories/produto_lista_repository_interface.dart';
 import 'package:inventos/app/shared/Constants/constants.dart' as constants;

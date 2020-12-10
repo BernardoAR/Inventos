@@ -24,7 +24,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(titulo: 'Home'),
+      appBar: AppBarWidget(),
       body: Observer(
         builder: (_) {
           return GridView.builder(
