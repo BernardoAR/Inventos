@@ -5,6 +5,9 @@ import 'package:inventos/app/shared/Constants/constants.dart';
 import 'package:inventos/app/shared/widgets/menu/menu_controller.dart';
 
 class MenuWidget extends StatefulWidget {
+  final int tile;
+
+  const MenuWidget({Key key, @required this.tile}) : super(key: key);
   @override
   _MenuWidgetState createState() => _MenuWidgetState();
 }
@@ -52,6 +55,7 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             onTap: () {
               Modular.to.pushReplacementNamed('/home');
             },
+            selected: widget.tile == 1,
           ),
           ListTile(
             leading: Icon(Icons.shopping_basket),
@@ -59,6 +63,7 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             onTap: () {
               Modular.to.pushReplacementNamed('/compras');
             },
+            selected: widget.tile == 2,
           ),
           ListTile(
             leading: Icon(Icons.request_page),
@@ -66,6 +71,7 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             onTap: () {
               Modular.to.pushReplacementNamed('/vendas');
             },
+            selected: widget.tile == 3,
           ),
           ListTile(
             leading: Icon(Icons.settings),
@@ -73,6 +79,7 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             onTap: () {
               Modular.to.pushReplacementNamed('/configuracoes');
             },
+            selected: widget.tile == 4,
           ),
           ListTile(
             leading: Icon(Icons.logout),

@@ -25,7 +25,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MenuWidget(),
+      drawer: MenuWidget(
+        tile: 1,
+      ),
       appBar: AppBarWidget(),
       body: Observer(
         builder: (_) {
