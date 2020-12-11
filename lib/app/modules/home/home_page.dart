@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget.dart';
+import 'package:inventos/app/shared/widgets/menu/menu_widget.dart';
 import 'package:mobx/mobx.dart';
 
 import 'home_controller.dart';
@@ -24,6 +25,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuWidget(),
       appBar: AppBarWidget(),
       body: Observer(
         builder: (_) {

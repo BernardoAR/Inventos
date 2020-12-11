@@ -31,6 +31,7 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  circular_profile_avatar: ^1.0.8
   flutter_launcher_icons: ^0.8.1
   flutter_signin_button: ^1.1.0
   http: ^0.12.2

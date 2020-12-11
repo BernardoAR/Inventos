@@ -19,6 +19,9 @@ abstract class _AuthControllerBase with Store {
     status = user == null ? AuthStatus.logoff : AuthStatus.login;
   }
 
+  @computed
+  get getUserProfile => user.additionalUserInfo.profile;
+
   @action
   _AuthControllerBase() {
     _authRepository.getUser().then(setUser);

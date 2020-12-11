@@ -20,7 +20,12 @@ class _AppBarWidgetState
   Widget build(BuildContext context) {
     return AppBar(
       title: controller.estaPesquisando ? CampoPesquisaWidget() : Container(),
-      leading: controller.estaPesquisando ? const BackButton() : Container(),
+      leading: controller.estaPesquisando
+          ? const BackButton()
+          : IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            ),
       actions: <Widget>[CampoPesquisaAcoesWidget()],
       flexibleSpace: Container(
         decoration:

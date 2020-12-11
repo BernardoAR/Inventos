@@ -1,3 +1,4 @@
+import 'shared/widgets/menu/menu_controller.dart';
 import 'shared/widgets/carrinho/carrinho_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -26,6 +27,7 @@ import 'shared/auth/repositories/auth_repository_interface.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        $MenuController,
         $CarrinhoController,
         $CarrinhoTotalController,
         $CarrinhoListaProdutosController,
