@@ -1,3 +1,6 @@
+import 'package:inventos/app/modules/cadastro/cadastro_module.dart';
+
+import 'modules/cadastro/cadastro_controller.dart';
 import 'shared/widgets/menu/menu_controller.dart';
 import 'shared/widgets/carrinho/carrinho_controller.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +30,8 @@ import 'shared/auth/repositories/auth_repository_interface.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        $CadastroController,
+        $CadastroController,
         $MenuController,
         $CarrinhoController,
         $CarrinhoTotalController,
@@ -45,13 +50,16 @@ class AppModule extends MainModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, child: (_, args) => SplashPage()),
-        ModularRouter('/login',
-            module: LoginModule(), transition: TransitionType.noTransition),
+        ModularRouter(Modular.initialRoute,
+            child: (_, args) => SplashPage(),
+            transition: TransitionType.downToUp),
+        ModularRouter('/login', module: LoginModule()),
         ModularRouter('/home', module: HomeModule()),
         ModularRouter('/carrinho', module: CarrinhoModule()),
         ModularRouter('/detalhes_produto', module: DetalhesProdutoModule()),
         ModularRouter('/produto', module: ProdutoModule()),
+        ModularRouter('/cadastro',
+            module: CadastroModule(), transition: TransitionType.downToUp),
       ];
 
   @override

@@ -27,6 +27,12 @@ abstract class _AuthControllerBase with Store {
     _authRepository.getUser().then(setUser);
   }
   @action
+  Future cadastraComEmail({email, senha, nome}) async {
+    return _authRepository.createEmailPasswordLogin(
+        email: email, senha: senha, nome: nome);
+  }
+
+  @action
   Future loginWithGoogle() async {
     user = await _authRepository.getGoogleLogin();
   }

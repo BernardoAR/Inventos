@@ -31,7 +31,7 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
     });
     Firebase.initializeApp();
     Future.delayed(Duration(seconds: 2)).then((v) {
-      Modular.to.pushReplacementNamed('/login');
+      Modular.to.pushReplacementNamed('/login', arguments: {'mensagem': ''});
     });
   }
 

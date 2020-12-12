@@ -47,6 +47,16 @@ mixin _$AuthController on _AuthControllerBase, Store {
     });
   }
 
+  final _$cadastraComEmailAsyncAction =
+      AsyncAction('_AuthControllerBase.cadastraComEmail');
+
+  @override
+  Future<dynamic> cadastraComEmail(
+      {dynamic email, dynamic senha, dynamic nome}) {
+    return _$cadastraComEmailAsyncAction.run(
+        () => super.cadastraComEmail(email: email, senha: senha, nome: nome));
+  }
+
   final _$loginWithGoogleAsyncAction =
       AsyncAction('_AuthControllerBase.loginWithGoogle');
 

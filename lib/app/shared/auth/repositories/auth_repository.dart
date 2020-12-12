@@ -6,14 +6,24 @@ class AuthRepository implements IAuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
-  Future getEmailPasswordLogin() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future getFacebookLogin() {
-    // TODO: implement getFacebookLogin
-    throw UnimplementedError();
+  Future createEmailPasswordLogin({email, senha, nome}) async {
+    // Verifica se deu algum erro
+    bool temErro = false;
+    String texto = '';
+    try {
+      // Cria o usuário com o email e a senha
+      await _auth.createUserWithEmailAndPassword(email: email, password: senha);
+      // Atualiza os dados do perfil
+      await _auth.currentUser.updateProfile(displayName: nome);
+    } on FirebaseAuthException catch (e) {
+      temErro = true;
+      if (e.code == 'weak-password') {
+        texto += 'A senha é muito fraca.';
+      } else if (e.code == 'email-already-in-use') {
+        texto += 'Uma conta já existe com esse email.';
+      }
+    }
+    return {'temErro': temErro, 'texto': texto};
   }
 
   @override

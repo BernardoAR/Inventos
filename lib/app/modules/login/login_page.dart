@@ -4,17 +4,34 @@ import 'login_controller.dart';
 import 'package:inventos/app/shared/Constants/constants.dart' as constants;
 import 'package:inventos/app/shared/Constants/constants_gradient.dart'
     as constantsGradient;
+import 'package:inventos/app/shared/widgets/alerta/alerta_widget.dart';
 
 class LoginPage extends StatefulWidget {
-  final String title;
-  const LoginPage({Key key, this.title = "Login"}) : super(key: key);
+  final String mensagem;
+
+  const LoginPage({Key key, this.mensagem}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
-  //use 'controller' variable to access controller
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.mensagem != null && widget.mensagem.isNotEmpty) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertaWidget(
+                titulo: 'Aviso',
+                conteudo: widget.mensagem,
+              );
+            });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +66,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   labelText: 'Senha',
                   filled: true,
                   fillColor: Colors.white),
+              obscureText: true,
             ),
             RaisedButton(
               onPressed: controller.loginWithEmail,
@@ -116,7 +134,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
       ),
       bottomNavigationBar: RaisedButton(
         onPressed: () {
-          Modular.to.pushReplacementNamed('/cadastro');
+          Modular.to.pushNamed('/cadastro');
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
