@@ -1,4 +1,7 @@
 import 'package:inventos/app/modules/cadastro/cadastro_module.dart';
+import 'package:inventos/app/shared/repositories/produtos/produtos_controller.dart';
+import 'package:inventos/app/shared/repositories/produtos/produtos_repository.dart';
+import 'package:inventos/app/shared/repositories/produtos/produtos_repository_interface.dart';
 
 import 'modules/cadastro/cadastro_controller.dart';
 import 'shared/widgets/menu/menu_controller.dart';
@@ -13,9 +16,6 @@ import 'package:inventos/app/modules/login/login_module.dart';
 import 'package:inventos/app/modules/produto/produto_module.dart';
 import 'package:inventos/app/pages/splash/splash_page.dart';
 import 'package:inventos/app/shared/auth/auth_controller.dart';
-import 'package:inventos/app/shared/produto_lista/produto_lista_controller.dart';
-import 'package:inventos/app/shared/produto_lista/repositories/produto_lista_repository.dart';
-import 'package:inventos/app/shared/produto_lista/repositories/produto_lista_repository_interface.dart';
 import 'package:inventos/app/shared/store/carrinho_store.dart';
 import 'package:inventos/app/shared/widgets/pesquisa/pesquisa_controller.dart';
 
@@ -40,10 +40,10 @@ class AppModule extends MainModule {
         $SplashController,
         $AppController,
         Bind<IAuthRepository>((i) => AuthRepository()),
-        Bind<IProdutoListaRepository>((i) => ProdutoListaRepository()),
+        Bind<IProdutosRepository>((i) => ProdutosRepository()),
         Bind((i) => AuthController()),
         Bind((i) => ProdutoController()),
-        Bind((i) => ProdutoListaController()),
+        Bind((i) => ProdutosController()),
         Bind((i) => CarrinhoStore()),
         Bind((i) => PesquisaController())
       ];

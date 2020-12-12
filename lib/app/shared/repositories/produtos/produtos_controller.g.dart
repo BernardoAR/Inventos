@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'produto_lista_controller.dart';
+part of 'produtos_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'produto_lista_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$ProdutoListaController on _ProdutoListaControllerBase, Store {
-  final _$produtoAtom = Atom(name: '_ProdutoListaControllerBase.produto');
+mixin _$ProdutosController on _ProdutosControllerBase, Store {
+  final _$produtoAtom = Atom(name: '_ProdutosControllerBase.produto');
 
   @override
   List<ProdutoModel> get produto {
@@ -25,24 +25,24 @@ mixin _$ProdutoListaController on _ProdutoListaControllerBase, Store {
   }
 
   final _$getListaProdutosAsyncAction =
-      AsyncAction('_ProdutoListaControllerBase.getListaProdutos');
+      AsyncAction('_ProdutosControllerBase.getListaProdutos');
 
   @override
   Future<dynamic> getListaProdutos() {
     return _$getListaProdutosAsyncAction.run(() => super.getListaProdutos());
   }
 
-  final _$_ProdutoListaControllerBaseActionController =
-      ActionController(name: '_ProdutoListaControllerBase');
+  final _$_ProdutosControllerBaseActionController =
+      ActionController(name: '_ProdutosControllerBase');
 
   @override
   dynamic setProdutos(dynamic value) {
-    final _$actionInfo = _$_ProdutoListaControllerBaseActionController
-        .startAction(name: '_ProdutoListaControllerBase.setProdutos');
+    final _$actionInfo = _$_ProdutosControllerBaseActionController.startAction(
+        name: '_ProdutosControllerBase.setProdutos');
     try {
       return super.setProdutos(value);
     } finally {
-      _$_ProdutoListaControllerBaseActionController.endAction(_$actionInfo);
+      _$_ProdutosControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
