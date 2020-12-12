@@ -20,7 +20,7 @@ class _CampoPesquisaWidgetState
           border: OutlineInputBorder(borderSide: BorderSide()),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey[800])),
-          labelText: 'Pesquisar Produto',
+          labelText: 'Pesquisar...',
           labelStyle: TextStyle(color: Colors.grey[800]),
           isDense: true, // Added this
           contentPadding: EdgeInsets.all(11),

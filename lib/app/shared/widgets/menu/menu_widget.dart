@@ -59,7 +59,7 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
           ),
           ListTile(
             leading: Icon(Icons.shopping_basket),
-            title: Text('Minhas Compras'),
+            title: Text('Comprados/Alugados'),
             onTap: () {
               Modular.to.pushReplacementNamed('/compras');
             },
@@ -67,7 +67,7 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
           ),
           ListTile(
             leading: Icon(Icons.request_page),
-            title: Text('Minhas Vendas'),
+            title: Text('Vender/Alugar'),
             onTap: () {
               Modular.to.pushReplacementNamed('/vendas');
             },
