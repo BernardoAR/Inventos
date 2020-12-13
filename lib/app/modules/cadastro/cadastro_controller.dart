@@ -11,14 +11,14 @@ class CadastroController = _CadastroControllerBase with _$CadastroController;
 
 abstract class _CadastroControllerBase with Store {
   AuthController auth = Modular.get();
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+
   @observable
   String titulo;
   @observable
   String conteudo;
-  final TextEditingController nomeController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController senhaController = TextEditingController();
-  final form = GlobalKey<FormState>();
   @observable
   bool loading = false;
   @observable
@@ -39,7 +39,7 @@ abstract class _CadastroControllerBase with Store {
       erro = true;
     } else {
       // Se não tiver, vai para a tela de login
-      Modular.to.pushReplacementNamed('/login', arguments: {
+      Modular.to.popAndPushNamed('/login', arguments: {
         'mensagem': 'Cadastro concluído! Verifique sua caixa de e-mail'
       });
     }

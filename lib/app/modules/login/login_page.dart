@@ -16,6 +16,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
+  final GlobalKey<FormState> form = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -36,6 +37,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -52,45 +54,70 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               width: mediaQuery.size.width * 0.8,
               fit: BoxFit.contain,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email),
-                  labelText: 'E-mail',
-                  filled: true,
-                  fillColor: Colors.white),
-            ),
-            SizedBox(height: mediaQuery.size.height * 0.01),
-            TextFormField(
-              decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
-                  labelText: 'Senha',
-                  filled: true,
-                  fillColor: Colors.white),
-              obscureText: true,
-            ),
-            RaisedButton(
-              onPressed: controller.loginWithEmail,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    child: Icon(
-                      Icons.send,
-                      size: 20,
-                      color: Colors.white,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: mediaQuery.size.width * 0.03,
-                    ),
+            Form(
+                key: form,
+                child: Column(children: [
+                  TextFormField(
+                    controller: controller.emailController,
+                    validator: controller.validaEmail,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email),
+                        labelText: 'E-mail',
+                        filled: true,
+                        fillColor: Colors.white,
+                        errorStyle: TextStyle(color: Colors.white)),
                   ),
-                  Text(
-                    'Entrar com o e-mail',
-                    style: TextStyle(color: Colors.white),
+                  SizedBox(height: mediaQuery.size.height * 0.01),
+                  TextFormField(
+                    controller: controller.senhaController,
+                    validator: controller.validaSenha,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock),
+                        labelText: 'Senha',
+                        filled: true,
+                        fillColor: Colors.white,
+                        errorStyle: TextStyle(color: Colors.white)),
+                    obscureText: true,
                   ),
-                ],
-              ),
-              color: Colors.grey[700],
-            ),
+                  RaisedButton(
+                    onPressed: () async {
+                      if (form.currentState.validate()) {
+                        await controller.loginWithEmail();
+                        if (controller.erro) {
+                          controller.erro = false;
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertaWidget(
+                                  titulo: controller.titulo,
+                                  conteudo: controller.conteudo,
+                                );
+                              });
+                        }
+                      }
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          child: Icon(
+                            Icons.send,
+                            size: 20,
+                            color: Colors.white,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: mediaQuery.size.width * 0.03,
+                          ),
+                        ),
+                        Text(
+                          'Entrar com o e-mail',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    color: Colors.grey[700],
+                  ),
+                ])),
             GestureDetector(
               onTap: () {
                 Modular.to.pushReplacementNamed('/esqueceuasenha');

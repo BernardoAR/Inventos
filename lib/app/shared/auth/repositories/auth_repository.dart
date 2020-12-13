@@ -15,12 +15,34 @@ class AuthRepository implements IAuthRepository {
       await _auth.createUserWithEmailAndPassword(email: email, password: senha);
       // Atualiza os dados do perfil
       await _auth.currentUser.updateProfile(displayName: nome);
+      // Envia o e-mail de verificação
+      await _auth.currentUser.sendEmailVerification();
+      // Cadastra ou atualiza o usuário
+
     } on FirebaseAuthException catch (e) {
       temErro = true;
       if (e.code == 'weak-password') {
         texto += 'A senha é muito fraca.';
       } else if (e.code == 'email-already-in-use') {
         texto += 'Uma conta já existe com esse email.';
+      }
+    }
+    return {'temErro': temErro, 'texto': texto};
+  }
+
+  @override
+  Future getEmailPasswordLogin({email, senha}) async {
+    // Verifica se deu algum erro
+    bool temErro = false;
+    String texto = '';
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: email);
+    } on FirebaseAuthException catch (e) {
+      temErro = true;
+      if (e.code == 'user-not-found') {
+        texto += 'E-mail não encontrado.';
+      } else if (e.code == 'wrong-password') {
+        texto += 'Senha incorreta.';
       }
     }
     return {'temErro': temErro, 'texto': texto};

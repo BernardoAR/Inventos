@@ -33,6 +33,11 @@ abstract class _AuthControllerBase with Store {
   }
 
   @action
+  Future loginWithEmail({email, senha}) async {
+    return _authRepository.getEmailPasswordLogin(email: email, senha: senha);
+  }
+
+  @action
   Future loginWithGoogle() async {
     user = await _authRepository.getGoogleLogin();
   }

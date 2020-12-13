@@ -13,6 +13,7 @@ class CadastroPage extends StatefulWidget {
 
 class _CadastroPageState
     extends ModularState<CadastroPage, CadastroController> {
+  final GlobalKey<FormState> form = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -29,7 +30,7 @@ class _CadastroPageState
           ),
           padding: EdgeInsets.all(20),
           child: Form(
-            key: controller.form,
+            key: form,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,7 +80,7 @@ class _CadastroPageState
                 RaisedButton(
                   onPressed: () async {
                     // Se estiver tudo certo, vai para o cadastro
-                    if (controller.form.currentState.validate()) {
+                    if (form.currentState.validate()) {
                       // Cadastra como email
                       await controller.cadastraComEmail();
                       if (controller.erro) {
