@@ -7,7 +7,7 @@ part of 'produtos_repository.dart';
 // **************************************************************************
 
 final $ProdutosRepository = BindInject(
-  (i) => ProdutosRepository(),
+  (i) => ProdutosRepository(i<CustomDio>()),
   singleton: true,
   lazy: true,
 );

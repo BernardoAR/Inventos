@@ -19,16 +19,28 @@ class ProdutoModel {
       this.precoUnitario,
       this.quantidade,
       this.usuario});
-
-  factory ProdutoModel.fromJson(dynamic json) {
+  factory ProdutoModel.fromJson(Map<String, dynamic> json) {
     return ProdutoModel(
+        id: int.parse(json['id']),
         ativo: int.parse(json['ativo']),
         descricao: json['descricao'],
-        id: int.parse(json['id']),
         precoUnitario: double.parse(json['precoUnitario']),
         quantidade: int.parse(json['quantidade']),
-        titulo: json['titulo'] as String,
-        url: json['url'] as String,
+        titulo: json['titulo'],
+        url: json['url'],
         usuario: UsuarioModel.fromJson(json['usuario']));
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = this.id;
+    data['ativo'] = this.ativo;
+    data['titulo'] = this.titulo;
+    data['url'] = this.url;
+    data['descricao'] = this.descricao;
+    data['precoUnitario'] = this.precoUnitario;
+    data['quantidade'] = this.quantidade;
+    data['usuario'] = this.usuario.uid;
+    return data;
   }
 }

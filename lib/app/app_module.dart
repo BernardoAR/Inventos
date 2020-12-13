@@ -1,8 +1,8 @@
+import 'package:dio/dio.dart';
+import 'shared/repositories/usuarios/usuarios_repository.dart';
 import 'package:inventos/app/modules/cadastro/cadastro_module.dart';
 import 'package:inventos/app/shared/repositories/produtos/produtos_controller.dart';
 import 'package:inventos/app/shared/repositories/produtos/produtos_repository.dart';
-import 'package:inventos/app/shared/repositories/produtos/produtos_repository_interface.dart';
-
 import 'modules/cadastro/cadastro_controller.dart';
 import 'shared/widgets/menu/menu_controller.dart';
 import 'shared/widgets/carrinho/carrinho_controller.dart';
@@ -18,6 +18,7 @@ import 'package:inventos/app/pages/splash/splash_page.dart';
 import 'package:inventos/app/shared/auth/auth_controller.dart';
 import 'package:inventos/app/shared/store/carrinho_store.dart';
 import 'package:inventos/app/shared/widgets/pesquisa/pesquisa_controller.dart';
+import 'package:inventos/app/shared/custom_dio/custom_dio.dart';
 
 import 'app_controller.dart';
 import 'modules/carrinho/widgets/carrinho_lista_produtos/carrinho_lista_produtos/carrinho_lista_produtos_controller.dart';
@@ -30,7 +31,7 @@ import 'shared/auth/repositories/auth_repository_interface.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
-        $CadastroController,
+        $UsuariosRepository,
         $CadastroController,
         $MenuController,
         $CarrinhoController,
@@ -40,12 +41,14 @@ class AppModule extends MainModule {
         $SplashController,
         $AppController,
         Bind<IAuthRepository>((i) => AuthRepository()),
-        Bind<IProdutosRepository>((i) => ProdutosRepository()),
+        Bind((i) => ProdutosRepository(i.get<CustomDio>())),
         Bind((i) => AuthController()),
         Bind((i) => ProdutoController()),
         Bind((i) => ProdutosController()),
         Bind((i) => CarrinhoStore()),
-        Bind((i) => PesquisaController())
+        Bind((i) => PesquisaController()),
+        Bind((i) => CustomDio(i.get<Dio>())),
+        Bind((i) => Dio()),
       ];
 
   @override
