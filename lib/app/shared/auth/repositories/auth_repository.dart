@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:inventos/app/shared/auth/repositories/auth_repository_interface.dart';
+import 'package:inventos/app/shared/models/tipo_usuario_model.dart';
+import 'package:inventos/app/shared/models/usuario_model.dart';
+import 'package:inventos/app/shared/repositories/usuarios/usuarios_repository.dart';
 
 class AuthRepository implements IAuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  final UsuariosRepository _usuariosRepository = Modular.get();
   @override
   Future createEmailPasswordLogin({email, senha, nome}) async {
     // Verifica se deu algum erro
@@ -18,7 +22,10 @@ class AuthRepository implements IAuthRepository {
       // Envia o e-mail de verificação
       await _auth.currentUser.sendEmailVerification();
       // Cadastra ou atualiza o usuário
-
+      await _usuariosRepository.insereAtualizaUsuario(UsuarioModel(
+          uid: _auth.currentUser.uid,
+          nome: nome,
+          tipoUsuario: TipoUsuarioModel(id: 1)));
     } on FirebaseAuthException catch (e) {
       temErro = true;
       if (e.code == 'weak-password') {
@@ -36,7 +43,7 @@ class AuthRepository implements IAuthRepository {
     bool temErro = false;
     String texto = '';
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: email);
+      await _auth.signInWithEmailAndPassword(email: email, password: senha);
     } on FirebaseAuthException catch (e) {
       temErro = true;
       if (e.code == 'user-not-found') {

@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/custom_dio/custom_dio.dart';
 import 'package:inventos/app/shared/models/produto_model.dart';
-import 'package:inventos/app/shared/repositories/repository_interface.dart';
 part 'produtos_repository.g.dart';
 
 @Injectable()
-class ProdutosRepository extends Disposable implements IRepository {
+class ProdutosRepository extends Disposable {
   final CustomDio dio;
 
   ProdutosRepository(this.dio);
@@ -16,12 +15,7 @@ class ProdutosRepository extends Disposable implements IRepository {
   @override
   void dispose() {}
 
-  @override
-  Future createPost() {
-    throw UnimplementedError();
-  }
-
-  @override
+  /// Método utilizado para pegar os produtos
   Future getPost() async {
     final response = await dio.client.get('/produto/pegaprodutos');
     return jsonDecode(response.data)

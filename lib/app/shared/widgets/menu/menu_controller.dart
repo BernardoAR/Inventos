@@ -20,6 +20,6 @@ abstract class _MenuControllerBase with Store {
   @action
   deslogar() {
     Modular.get<AuthController>().logOut();
-    Modular.to.pushReplacementNamed('/login');
+    Modular.to.pushReplacementNamed('/login', arguments: {'mensagem': ''});
   }
 }

@@ -17,7 +17,6 @@ class _CadastroPageState
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(),

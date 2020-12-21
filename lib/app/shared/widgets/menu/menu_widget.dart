@@ -81,6 +81,9 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             },
             selected: widget.tile == 4,
           ),
+          Divider(
+            color: Colors.grey[600],
+          ),
           ListTile(
             leading: Icon(Icons.logout),
             title: Text('Sair'),
