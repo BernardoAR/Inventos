@@ -70,6 +70,10 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future get user async => _auth.currentUser;
+  @override
+  Future resetPassword({email}) async {
+    return _auth.sendPasswordResetEmail(email: email);
+  }
 
   @override
   Future getLogOut() {

@@ -34,6 +34,21 @@ abstract class _AuthControllerBase with Store {
   }
 
   @action
+  Future resetaSenha({email}) async {
+    String texto;
+    try {
+      await _authRepository.resetPassword(email: email);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        texto += 'E-mail inválido.';
+      } else if (e.code == 'user-not-found') {
+        texto += 'Usuário não encontrado.';
+      }
+    }
+    return {'texto': texto};
+  }
+
+  @action
   Future loginWithEmail({email, senha}) async {
     String texto;
     try {

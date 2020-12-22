@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:inventos/app/modules/esqueceu_senha/esqueceu_senha_module.dart';
 import 'shared/repositories/usuarios/usuarios_repository.dart';
 import 'package:inventos/app/modules/cadastro/cadastro_module.dart';
 import 'package:inventos/app/shared/repositories/produtos/produtos_controller.dart';
@@ -63,6 +64,8 @@ class AppModule extends MainModule {
         ModularRouter('/produto', module: ProdutoModule()),
         ModularRouter('/cadastro',
             module: CadastroModule(), transition: TransitionType.downToUp),
+        ModularRouter('/esqueceusenha',
+            module: EsqueceuSenhaModule(), transition: TransitionType.downToUp),
       ];
 
   @override

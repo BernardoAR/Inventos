@@ -57,6 +57,14 @@ mixin _$AuthController on _AuthControllerBase, Store {
         () => super.cadastraComEmail(email: email, senha: senha, nome: nome));
   }
 
+  final _$resetaSenhaAsyncAction =
+      AsyncAction('_AuthControllerBase.resetaSenha');
+
+  @override
+  Future<dynamic> resetaSenha({dynamic email}) {
+    return _$resetaSenhaAsyncAction.run(() => super.resetaSenha(email: email));
+  }
+
   final _$loginWithEmailAsyncAction =
       AsyncAction('_AuthControllerBase.loginWithEmail');
 

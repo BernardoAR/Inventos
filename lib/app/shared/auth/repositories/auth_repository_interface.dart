@@ -4,5 +4,6 @@ abstract class IAuthRepository {
   Future createEmailPasswordLogin({email, senha, nome});
   Future getEmailPasswordLogin({email, senha});
   Future<String> getToken();
+  Future resetPassword({email});
   Future getLogOut();
 }

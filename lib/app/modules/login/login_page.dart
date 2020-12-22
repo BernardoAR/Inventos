@@ -120,7 +120,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 ])),
             GestureDetector(
               onTap: () {
-                Modular.to.pushReplacementNamed('/esqueceuasenha');
+                Modular.to.pushNamed('/esqueceusenha');
               },
               child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                 Text("Esqueceu a Senha?", style: TextStyle(color: Colors.blue))
