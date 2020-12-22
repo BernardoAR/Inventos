@@ -58,7 +58,7 @@ abstract class _LoginControllerBase with Store {
       senha: senhaController.text,
     );
     // Verifica se tem erro
-    if (objeto['temErro']) {
+    if (objeto['texto'] != null) {
       titulo = 'Erro';
       conteudo = objeto['texto'];
       erro = true;

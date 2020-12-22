@@ -14,12 +14,6 @@ class MenuWidget extends StatefulWidget {
 
 class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
   @override
-  void initState() {
-    super.initState();
-    controller.setUsuario();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
@@ -29,16 +23,16 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
               decoration: BoxDecoration(
                 color: primaryColor,
               ),
-              accountName: Text(controller.usuario['given_name']),
-              accountEmail: Text(controller.usuario['email']),
+              accountName: Text(controller.usuario.user.displayName),
+              accountEmail: Text(controller.usuario.user.email),
               currentAccountPicture: CircularProfileAvatar(
-                controller.usuario[
-                    'picture'], //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
+                controller.usuario.user.photoURL ??
+                    '', //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
                 radius: 200, // sets radius, default 50.0
                 backgroundColor: Colors
                     .transparent, // sets background color, default Colors.white
                 initialsText: Text(
-                  controller.usuario['given_name'][0],
+                  controller.usuario.user.displayName[0],
                   style: TextStyle(fontSize: 40, color: Colors.blueAccent),
                 ), // sets initials text, set your own style, default Text('')
                 borderColor:

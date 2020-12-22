@@ -9,13 +9,13 @@ part of 'auth_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AuthController on _AuthControllerBase, Store {
-  Computed<dynamic> _$getUserProfileComputed;
+  Computed<dynamic> _$userProfileComputed;
 
   @override
-  dynamic get getUserProfile => (_$getUserProfileComputed ??= Computed<dynamic>(
-          () => super.getUserProfile,
-          name: '_AuthControllerBase.getUserProfile'))
-      .value;
+  dynamic get userProfile =>
+      (_$userProfileComputed ??= Computed<dynamic>(() => super.userProfile,
+              name: '_AuthControllerBase.userProfile'))
+          .value;
 
   final _$statusAtom = Atom(name: '_AuthControllerBase.status');
 
@@ -104,7 +104,7 @@ mixin _$AuthController on _AuthControllerBase, Store {
     return '''
 status: ${status},
 user: ${user},
-getUserProfile: ${getUserProfile}
+userProfile: ${userProfile}
     ''';
   }
 }

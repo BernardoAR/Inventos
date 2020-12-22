@@ -22,10 +22,4 @@ class ProdutosRepository extends Disposable {
         .map((item) => ProdutoModel.fromJson(item))
         .toList();
   }
-
-  @override
-  Future updatePost() {
-    // TODO: implement updatePost
-    throw UnimplementedError();
-  }
 }

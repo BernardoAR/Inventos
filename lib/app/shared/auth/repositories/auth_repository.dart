@@ -39,20 +39,8 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future getEmailPasswordLogin({email, senha}) async {
-    // Verifica se deu algum erro
-    bool temErro = false;
-    String texto = '';
-    try {
-      await _auth.signInWithEmailAndPassword(email: email, password: senha);
-    } on FirebaseAuthException catch (e) {
-      temErro = true;
-      if (e.code == 'user-not-found') {
-        texto += 'E-mail não encontrado.';
-      } else if (e.code == 'wrong-password') {
-        texto += 'Senha incorreta.';
-      }
-    }
-    return {'temErro': temErro, 'texto': texto};
+    return await _auth.signInWithEmailAndPassword(
+        email: email, password: senha);
   }
 
   @override
@@ -81,9 +69,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<dynamic> getUser() async {
-    return _auth.currentUser;
-  }
+  Future get user async => _auth.currentUser;
 
   @override
   Future getLogOut() {

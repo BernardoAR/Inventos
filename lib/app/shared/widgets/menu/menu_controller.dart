@@ -9,13 +9,8 @@ class MenuController = _MenuControllerBase with _$MenuController;
 
 abstract class _MenuControllerBase with Store {
   AuthController auth = Modular.get();
-  @observable
-  dynamic usuario;
-
-  @action
-  setUsuario() {
-    usuario = auth.getUserProfile;
-  }
+  @computed
+  get usuario => auth.userProfile;
 
   @action
   deslogar() {

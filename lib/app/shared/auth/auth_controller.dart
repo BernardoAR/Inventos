@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/auth/repositories/auth_repository_interface.dart';
 import 'package:mobx/mobx.dart';
@@ -20,11 +21,11 @@ abstract class _AuthControllerBase with Store {
   }
 
   @computed
-  get getUserProfile => user.additionalUserInfo.profile;
+  get userProfile => user;
 
   @action
   _AuthControllerBase() {
-    _authRepository.getUser().then(setUser);
+    _authRepository.user.then(setUser);
   }
   @action
   Future cadastraComEmail({email, senha, nome}) async {
@@ -34,7 +35,18 @@ abstract class _AuthControllerBase with Store {
 
   @action
   Future loginWithEmail({email, senha}) async {
-    return _authRepository.getEmailPasswordLogin(email: email, senha: senha);
+    String texto;
+    try {
+      user = await _authRepository.getEmailPasswordLogin(
+          email: email, senha: senha);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        texto += 'E-mail não encontrado.';
+      } else if (e.code == 'wrong-password') {
+        texto += 'Senha incorreta.';
+      }
+    }
+    return {'texto': texto};
   }
 
   @action
