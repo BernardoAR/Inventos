@@ -20,9 +20,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   @override
   void initState() {
     super.initState();
-    // TODO: MUDAR AQUI DEPOIS HEIN
-    controller.emailController.text = 'bernardo_roballo@hotmail.com';
-    controller.senhaController.text = 'windows7';
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.mensagem != null && widget.mensagem.isNotEmpty) {
         showDialog(
