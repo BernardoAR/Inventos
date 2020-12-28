@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget.dart';
+import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget_pesquisa.dart';
 import 'package:inventos/app/shared/widgets/menu/menu_widget.dart';
 import 'package:mobx/mobx.dart';
 
@@ -28,7 +28,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       drawer: MenuWidget(
         tile: 1,
       ),
-      appBar: AppBarWidget(),
+      appBar: AppBarWidgetPesquisa(),
       body: Observer(
         builder: (_) {
           return GridView.builder(
@@ -37,7 +37,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 crossAxisCount: 2, childAspectRatio: .7),
             itemBuilder: (_, index) {
               var current = controller.produtos[index];
-
+              var possuiDesconto = current.desconto > 0.0;
               return InkWell(
                 onTap: () {
                   Modular.to.pushNamed("/compra", arguments: current);
@@ -78,14 +78,18 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "R\$ ${current.precoUnitario}",
+                                  possuiDesconto
+                                      ? "R\$ ${current.precoUnitario - current.desconto}"
+                                      : "R\$ ${current.precoUnitario}",
                                   style: TextStyle(
                                     color: Colors.green,
                                     fontSize: 16,
                                   ),
                                 ),
                                 Text(
-                                  "R\$ ${current.precoUnitario}",
+                                  possuiDesconto
+                                      ? "R\$ ${current.precoUnitario}"
+                                      : "",
                                   style: TextStyle(
                                     color: Colors.red[300],
                                     decoration: TextDecoration.lineThrough,

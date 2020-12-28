@@ -7,6 +7,7 @@ class ProdutoModel {
   final String url;
   final String descricao;
   final double precoUnitario;
+  final double desconto;
   final int quantidade;
   final UsuarioModel usuario;
 
@@ -17,6 +18,7 @@ class ProdutoModel {
       this.url,
       this.descricao,
       this.precoUnitario,
+      this.desconto,
       this.quantidade,
       this.usuario});
   factory ProdutoModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class ProdutoModel {
         ativo: int.parse(json['ativo']),
         descricao: json['descricao'],
         precoUnitario: double.parse(json['precoUnitario']),
+        desconto: double.parse(json['desconto']),
         quantidade: int.parse(json['quantidade']),
         titulo: json['titulo'],
         url: json['url'],
@@ -39,6 +42,7 @@ class ProdutoModel {
     data['url'] = this.url;
     data['descricao'] = this.descricao;
     data['precoUnitario'] = this.precoUnitario;
+    data['desconto'] = this.desconto;
     data['quantidade'] = this.quantidade;
     data['usuario'] = this.usuario.uid;
     return data;
