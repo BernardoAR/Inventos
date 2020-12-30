@@ -38,12 +38,24 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             itemBuilder: (_, index) {
               var current = controller.produtos[index];
               var possuiDesconto = current.desconto > 0.0;
+
               return InkWell(
                 onTap: () {
                   Modular.to.pushNamed("/compra", arguments: current);
                 },
                 child: Container(
                   margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(1.0, 5.0),
+                        blurRadius: 10.0,
+                      ),
+                    ],
+                  ),
                   child: Column(
                     children: [
                       Expanded(

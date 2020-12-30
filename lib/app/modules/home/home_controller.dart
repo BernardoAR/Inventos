@@ -14,4 +14,9 @@ abstract class _HomeControllerBase with Store {
   Future listarProdutos() async {
     produtos = await produto.getListaProdutos();
   }
+
+  @action
+  Future listarProdutosWhere(nome) async {
+    produtos = await produto.getListaProdutosWhere(nome);
+  }
 }

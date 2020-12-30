@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/custom_dio/custom_dio.dart';
 import 'package:inventos/app/shared/models/produto_model.dart';
@@ -16,10 +17,16 @@ class ProdutosRepository extends Disposable {
   void dispose() {}
 
   /// Método utilizado para pegar os produtos
-  Future getPost() async {
-    final response = await dio.client.get('/produto/pegaprodutos');
-    return jsonDecode(response.data)
-        .map((item) => ProdutoModel.fromJson(item))
-        .toList();
+  Future getPost({nome}) async {
+    print('alo');
+    try {
+      final response =
+          await dio.client.post('/produto/pegaprodutos', data: {'nome': nome});
+      return jsonDecode(response.data)
+          .map((item) => ProdutoModel.fromJson(item))
+          .toList();
+    } on DioError catch (e) {
+      print(e);
+    }
   }
 }

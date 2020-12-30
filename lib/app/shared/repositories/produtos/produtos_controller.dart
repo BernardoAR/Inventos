@@ -25,4 +25,9 @@ abstract class _ProdutosControllerBase with Store {
   Future getListaProdutos() async {
     return await _produtosRepository.getPost();
   }
+
+  @action
+  Future getListaProdutosWhere(String nome) async {
+    return await _produtosRepository.getPost(nome: nome);
+  }
 }
