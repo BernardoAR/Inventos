@@ -41,7 +41,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
               return InkWell(
                 onTap: () {
-                  Modular.to.pushNamed("/compra", arguments: current);
+                  Modular.to.pushNamed("/detalhes_produto", arguments: current);
                 },
                 child: Container(
                   margin: EdgeInsets.all(10),

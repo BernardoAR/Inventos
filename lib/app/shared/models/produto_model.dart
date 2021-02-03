@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:inventos/app/shared/models/usuario_model.dart';
+import 'package:inventos/app/shared/models/produto_tipo_model.dart';
 
 class ProdutoModel {
   final int id;
@@ -10,6 +13,7 @@ class ProdutoModel {
   final double desconto;
   final int quantidade;
   final UsuarioModel usuario;
+  final ProdutoTipoModel tipoProduto;
 
   ProdutoModel(
       {this.id,
@@ -20,7 +24,8 @@ class ProdutoModel {
       this.precoUnitario,
       this.desconto,
       this.quantidade,
-      this.usuario});
+      this.usuario,
+      this.tipoProduto});
   factory ProdutoModel.fromJson(Map<String, dynamic> json) {
     return ProdutoModel(
         id: int.parse(json['id']),
@@ -31,7 +36,9 @@ class ProdutoModel {
         quantidade: int.parse(json['quantidade']),
         titulo: json['titulo'],
         url: json['url'],
-        usuario: UsuarioModel.fromJson(json['usuario']));
+        usuario: UsuarioModel.fromJson(json['usuario']),
+        tipoProduto:
+            ProdutoTipoModel.fromJson(jsonDecode(json['produtoTipo'])));
   }
 
   Map<String, dynamic> toJson() {
@@ -45,6 +52,7 @@ class ProdutoModel {
     data['desconto'] = this.desconto;
     data['quantidade'] = this.quantidade;
     data['usuario'] = this.usuario.uid;
+    data['tipoProduto'] = this.tipoProduto.id;
     return data;
   }
 }

@@ -42,6 +42,15 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return _$listarProdutosAsyncAction.run(() => super.listarProdutos());
   }
 
+  final _$listarProdutosWhereAsyncAction =
+      AsyncAction('_HomeControllerBase.listarProdutosWhere');
+
+  @override
+  Future<dynamic> listarProdutosWhere(dynamic nome) {
+    return _$listarProdutosWhereAsyncAction
+        .run(() => super.listarProdutosWhere(nome));
+  }
+
   @override
   String toString() {
     return '''

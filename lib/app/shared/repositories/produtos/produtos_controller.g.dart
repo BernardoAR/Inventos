@@ -32,6 +32,15 @@ mixin _$ProdutosController on _ProdutosControllerBase, Store {
     return _$getListaProdutosAsyncAction.run(() => super.getListaProdutos());
   }
 
+  final _$getListaProdutosWhereAsyncAction =
+      AsyncAction('_ProdutosControllerBase.getListaProdutosWhere');
+
+  @override
+  Future<dynamic> getListaProdutosWhere(String nome) {
+    return _$getListaProdutosWhereAsyncAction
+        .run(() => super.getListaProdutosWhere(nome));
+  }
+
   final _$_ProdutosControllerBaseActionController =
       ActionController(name: '_ProdutosControllerBase');
 
