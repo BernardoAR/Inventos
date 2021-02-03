@@ -17,10 +17,7 @@ class CarrinhoModule extends ChildModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter('/:title',
-            child: (_, args) => CarrinhoPage(
-                  title: args.params['title'],
-                )),
+        ModularRouter(Modular.initialRoute, child: (_, args) => CarrinhoPage()),
       ];
 
   static Inject get to => Inject<CarrinhoModule>.of();

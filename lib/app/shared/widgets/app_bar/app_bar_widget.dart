@@ -25,7 +25,9 @@ class _AppBarWidgetState
       title: Text(widget.titulo),
       leading: IconButton(
         icon: Icon(Icons.menu),
-        onPressed: () => Scaffold.of(context).openDrawer(),
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
       ),
       flexibleSpace: Container(
         decoration:

@@ -29,6 +29,23 @@ mixin _$CarrinhoListaProdutosController
               name: '_CarrinhoListaProdutosControllerBase.listaProdutos'))
           .value;
 
+  final _$_CarrinhoListaProdutosControllerBaseActionController =
+      ActionController(name: '_CarrinhoListaProdutosControllerBase');
+
+  @override
+  void removerProdutosNoCarrinho(ProdutoModel produtoModel) {
+    final _$actionInfo =
+        _$_CarrinhoListaProdutosControllerBaseActionController.startAction(
+            name:
+                '_CarrinhoListaProdutosControllerBase.removerProdutosNoCarrinho');
+    try {
+      return super.removerProdutosNoCarrinho(produtoModel);
+    } finally {
+      _$_CarrinhoListaProdutosControllerBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

@@ -1,4 +1,5 @@
 import 'package:inventos/app/shared/models/carrinho_model.dart';
+import 'package:inventos/app/shared/models/produto_model.dart';
 import 'package:inventos/app/shared/store/carrinho_store.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -17,4 +18,8 @@ abstract class _CarrinhoListaProdutosControllerBase with Store {
   @computed
   ObservableList<CarrinhoModel> get listaProdutos =>
       _carrinhoStore.produtosNoCarrinho;
+  @action
+  void removerProdutosNoCarrinho(ProdutoModel produtoModel) {
+    _carrinhoStore.removerProdutosNoCarrinho(produtoModel);
+  }
 }

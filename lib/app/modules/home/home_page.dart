@@ -118,7 +118,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                                 Expanded(
                                   child: Text(
                                     "${current.descricao}",
-                                    maxLines: 2,
+                                    maxLines: 1,
                                     style: TextStyle(
                                       color: Colors.black87,
                                     ),

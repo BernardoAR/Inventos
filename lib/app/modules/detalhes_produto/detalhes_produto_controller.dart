@@ -1,3 +1,4 @@
+import 'package:inventos/app/shared/models/produto_model.dart';
 import 'package:inventos/app/shared/store/carrinho_store.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -12,8 +13,8 @@ abstract class _DetalhesProdutoControllerBase with Store {
   final CarrinhoStore _carrinhoStore;
 
   _DetalhesProdutoControllerBase(this._carrinhoStore);
-
-  void adicionaProdutoNoCarrinho(produtoModel) {
+  @action
+  void adicionaProdutoNoCarrinho(ProdutoModel produtoModel) {
     _carrinhoStore.adicionarProdutoCarrinho(produtoModel);
   }
 }

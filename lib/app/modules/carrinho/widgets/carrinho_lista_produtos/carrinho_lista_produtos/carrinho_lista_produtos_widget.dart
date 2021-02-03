@@ -15,48 +15,57 @@ class _CarrinhoListaProdutosWidgetState extends ModularState<
     CarrinhoListaProdutosWidget, CarrinhoListaProdutosController> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: controller.listaProdutos?.length ?? 0,
-      physics: NeverScrollableScrollPhysics(),
-      itemBuilder: (BuildContext context, int index) {
-        var current = controller.listaProdutos[index];
-        return Card(
-          margin: EdgeInsets.all(5),
-          child: ListTile(
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundImage: NetworkImage(current.produto.url),
-              child: Text('P$index'),
+    return Observer(builder: (context) {
+      return ListView.builder(
+        shrinkWrap: true,
+        itemCount: controller.listaProdutos?.length ?? 0,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (BuildContext context, int index) {
+          var current = controller.listaProdutos[index];
+          return Card(
+            margin: EdgeInsets.all(5),
+            child: ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(current.produto.url),
+                child: Text('P$index'),
+              ),
+              title: Row(
+                children: [
+                  Expanded(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                        Text(
+                          '${current.produto.titulo}',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text('R\$ ${current.produto.precoUnitario}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey)),
+                      ])),
+                  IconButton(
+                      icon: Icon(Icons.remove), onPressed: current.remover),
+                  Observer(builder: (BuildContext context) {
+                    return Text('${current.quantidade}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.grey));
+                  }),
+                  IconButton(
+                      icon: Icon(Icons.add), onPressed: current.adicionar),
+                  IconButton(
+                    icon: Icon(Icons.cancel),
+                    onPressed: () {
+                      controller.removerProdutosNoCarrinho(current.produto);
+                    },
+                  )
+                ],
+              ),
             ),
-            title: Row(
-              children: [
-                Expanded(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                      Text(
-                        '${current.produto.titulo}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text('R\$ ${current.produto.precoUnitario}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: Colors.grey)),
-                    ])),
-                IconButton(
-                    icon: Icon(Icons.remove), onPressed: current.remover),
-                Observer(builder: (BuildContext context) {
-                  return Text('R\$ ${current.quantidade}',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, color: Colors.grey));
-                }),
-                IconButton(icon: Icon(Icons.add), onPressed: current.adicionar),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    });
   }
 }

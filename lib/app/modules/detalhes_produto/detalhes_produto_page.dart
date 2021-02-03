@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/models/produto_model.dart';
 import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget.dart';
 import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget_pesquisa.dart';
+import 'package:inventos/app/shared/widgets/menu/menu_widget.dart';
 import 'detalhes_produto_controller.dart';
 import 'package:inventos/app/shared/Constants/constants.dart' as constants;
 
@@ -25,6 +26,9 @@ class _DetalhesProdutoPageState
     var possuiDesconto = widget.produtoModel.desconto > 0.0;
     return Scaffold(
       appBar: AppBarWidgetPesquisa(),
+      drawer: MenuWidget(
+        tile: 0,
+      ),
       body: Column(
         children: <Widget>[
           Padding(
@@ -68,7 +72,10 @@ class _DetalhesProdutoPageState
             width: double.infinity,
             height: 40,
             child: RaisedButton(
-              onPressed: () async {},
+              onPressed: () {
+                controller.adicionaProdutoNoCarrinho(widget.produtoModel);
+                Modular.link.popAndPushNamed("/carrinho");
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

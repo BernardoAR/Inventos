@@ -8,6 +8,7 @@ class CarrinhoStore = _CarrinhoStoreBase with _$CarrinhoStore;
 abstract class _CarrinhoStoreBase with Store {
   var produtosNoCarrinho = ObservableList<CarrinhoModel>();
   void adicionarProdutoCarrinho(ProdutoModel produtoModel) {
+    print(produtoModel.toJson());
     // Verifica se tem um índice na lista em relação ao produto, para adicionar mais uma quantidade caso exista
     var index = produtosNoCarrinho.indexWhere(
         (carrinhoModel) => carrinhoModel.produto.id == produtoModel.id);
@@ -18,11 +19,24 @@ abstract class _CarrinhoStoreBase with Store {
     } else {
       produtosNoCarrinho.add(CarrinhoModel(produto: produtoModel));
     }
-    produtosNoCarrinho.add(CarrinhoModel(produto: produtoModel));
+  }
+
+  void removerProdutosNoCarrinho(ProdutoModel produtoModel) {
+    // Verifica se tem um índice na lista em relação ao produto, para adicionar mais uma quantidade caso exista
+    var index = produtosNoCarrinho.indexWhere(
+        (carrinhoModel) => carrinhoModel.produto.id == produtoModel.id);
+    // Se possuir, busca o elemento e deleta
+    produtosNoCarrinho.removeAt(index);
   }
 
   @computed
-  double get total => produtosNoCarrinho
-      .map((item) => item.produto.precoUnitario * item.quantidade)
-      .reduce((value, element) => value + element);
+  double get total {
+    if (produtosNoCarrinho.isEmpty) {
+      return 0.00;
+    } else {
+      return produtosNoCarrinho
+          .map((item) => item.produto.precoUnitario * item.quantidade)
+          .reduce((value, element) => value + element);
+    }
+  }
 }

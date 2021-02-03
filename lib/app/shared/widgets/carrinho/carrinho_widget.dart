@@ -7,7 +7,8 @@ class CarrinhoWidget extends StatelessWidget {
     return IconButton(
         icon: Icon(Icons.shopping_cart),
         onPressed: () {
-          Modular.link.popAndPushNamed('/carrinho');
+          Modular.to.pushNamedAndRemoveUntil(
+              '/carrinho', ModalRoute.withName('/home'));
         });
   }
 }

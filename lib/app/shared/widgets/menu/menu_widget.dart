@@ -40,7 +40,7 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
                 cacheImage:
                     true, // allow widget to cache image against provided url
                 onTap: () {
-                  print('adil');
+                  print('Clicando no nome do usuário');
                 }, // sets on tap
               )),
           ListTile(
