@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'produto_controller.dart';
+part of 'vender_controller.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $ProdutoController = BindInject(
-  (i) => ProdutoController(),
+final $VenderController = BindInject(
+  (i) => VenderController(),
   singleton: true,
   lazy: true,
 );
@@ -18,8 +18,8 @@ final $ProdutoController = BindInject(
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$ProdutoController on _ProdutoControllerBase, Store {
-  final _$produtosAtom = Atom(name: '_ProdutoControllerBase.produtos');
+mixin _$VenderController on _VenderControllerBase, Store {
+  final _$produtosAtom = Atom(name: '_VenderControllerBase.produtos');
 
   @override
   List<dynamic> get produtos {
@@ -35,20 +35,11 @@ mixin _$ProdutoController on _ProdutoControllerBase, Store {
   }
 
   final _$listarProdutosAsyncAction =
-      AsyncAction('_ProdutoControllerBase.listarProdutos');
+      AsyncAction('_VenderControllerBase.listarProdutos');
 
   @override
   Future<dynamic> listarProdutos() {
     return _$listarProdutosAsyncAction.run(() => super.listarProdutos());
-  }
-
-  final _$listarMeusProdutosAsyncAction =
-      AsyncAction('_ProdutoControllerBase.listarMeusProdutos');
-
-  @override
-  Future<dynamic> listarMeusProdutos(dynamic uid) {
-    return _$listarMeusProdutosAsyncAction
-        .run(() => super.listarMeusProdutos(uid));
   }
 
   @override

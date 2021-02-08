@@ -55,7 +55,8 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             leading: Icon(Icons.shopping_basket),
             title: Text('Comprados/Alugados'),
             onTap: () {
-              Modular.to.pushReplacementNamed('/compras');
+              Modular.to.pushNamedAndRemoveUntil(
+                  '/compras', ModalRoute.withName('/home'));
             },
             selected: widget.tile == 2,
           ),
@@ -63,7 +64,8 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             leading: Icon(Icons.request_page),
             title: Text('Vender/Alugar'),
             onTap: () {
-              Modular.to.pushReplacementNamed('/vendas');
+              Modular.to.pushNamedAndRemoveUntil(
+                  '/vendas', ModalRoute.withName('/home'));
             },
             selected: widget.tile == 3,
           ),
@@ -71,7 +73,8 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             leading: Icon(Icons.settings),
             title: Text('Configurações'),
             onTap: () {
-              Modular.to.pushReplacementNamed('/configuracoes');
+              Modular.to.pushNamedAndRemoveUntil(
+                  '/configuracoes', ModalRoute.withName('/home'));
             },
             selected: widget.tile == 4,
           ),

@@ -20,7 +20,20 @@ class ProdutosRepository extends Disposable {
   Future getPost({nome}) async {
     try {
       final response =
-          await dio.client.post('/produto/pegaprodutos', data: {'nome': nome});
+          await dio.client.post('/produto/pegaProdutos', data: {'nome': nome});
+      return jsonDecode(response.data)
+          .map((item) => ProdutoModel.fromJson(item))
+          .toList();
+    } on DioError catch (e) {
+      print(e);
+    }
+  }
+
+  /// Método utilizado para pegar os produtos por usuario
+  Future getPostUsuario({uid}) async {
+    try {
+      final response = await dio.client
+          .post('/produto/pegaProdutosUsuario', data: {'uid': uid});
       return jsonDecode(response.data)
           .map((item) => ProdutoModel.fromJson(item))
           .toList();

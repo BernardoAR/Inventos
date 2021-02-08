@@ -9,18 +9,6 @@ class ProdutosController = _ProdutosControllerBase with _$ProdutosController;
 abstract class _ProdutosControllerBase with Store {
   final ProdutosRepository _produtosRepository = Modular.get();
 
-  @observable
-  List<ProdutoModel> produto;
-
-  @action
-  setProdutos(dynamic value) {
-    produto = value;
-  }
-
-  @action
-  _ProdutosControllerBase() {
-    _produtosRepository.getPost().then(setProdutos);
-  }
   @action
   Future getListaProdutos() async {
     return await _produtosRepository.getPost();
@@ -29,5 +17,10 @@ abstract class _ProdutosControllerBase with Store {
   @action
   Future getListaProdutosWhere(String nome) async {
     return await _produtosRepository.getPost(nome: nome);
+  }
+
+  @action
+  Future getListaProdutosUsuario(String uid) async {
+    return await _produtosRepository.getPostUsuario(uid: uid);
   }
 }

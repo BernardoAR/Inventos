@@ -1,3 +1,5 @@
+import 'package:inventos/app/modules/vender/vender_module.dart';
+
 import 'shared/store/usuarios_store.dart';
 import 'package:dio/dio.dart';
 import 'package:inventos/app/modules/configuracoes/configuracoes_module.dart';
@@ -73,6 +75,8 @@ class AppModule extends MainModule {
             module: EsqueceuSenhaModule(), transition: TransitionType.downToUp),
         ModularRouter('/configuracoes',
             module: ConfiguracoesModule(), transition: TransitionType.fadeIn),
+        ModularRouter('/vendas',
+            module: VenderModule(), transition: TransitionType.fadeIn),
       ];
 
   @override
