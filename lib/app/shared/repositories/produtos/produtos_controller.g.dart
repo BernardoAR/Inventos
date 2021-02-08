@@ -35,6 +35,15 @@ mixin _$ProdutosController on _ProdutosControllerBase, Store {
         .run(() => super.getListaProdutosUsuario(uid));
   }
 
+  final _$inserirProdutoAsyncAction =
+      AsyncAction('_ProdutosControllerBase.inserirProduto');
+
+  @override
+  Future<dynamic> inserirProduto(dynamic produto, dynamic categoria) {
+    return _$inserirProdutoAsyncAction
+        .run(() => super.inserirProduto(produto, categoria));
+  }
+
   @override
   String toString() {
     return '''

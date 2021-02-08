@@ -1,3 +1,5 @@
+import 'package:inventos/app/modules/vender/novo/novo_module.dart';
+
 import 'vender_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -11,7 +13,9 @@ class VenderModule extends ChildModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, child: (_, args) => VenderPage()),
+        ModularRouter(Modular.initialRoute,
+            child: (_, args) => VenderPage(mensagem: args.data['mensagem'])),
+        ModularRouter('/novo', module: NovoModule()),
       ];
 
   static Inject get to => Inject<VenderModule>.of();

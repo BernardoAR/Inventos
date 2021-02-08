@@ -1,3 +1,6 @@
+import 'package:inventos/app/shared/widgets/imagem/imagem_widget.dart';
+
+import 'shared/widgets/imagem/imagem_controller.dart';
 import 'package:inventos/app/modules/vender/vender_module.dart';
 
 import 'shared/store/usuarios_store.dart';
@@ -11,7 +14,6 @@ import 'package:inventos/app/shared/repositories/produtos/produtos_controller.da
 import 'package:inventos/app/shared/repositories/produtos/produtos_repository.dart';
 import 'modules/cadastro/cadastro_controller.dart';
 import 'shared/widgets/menu/menu_controller.dart';
-import 'shared/widgets/carrinho/carrinho_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/app_widget.dart';
@@ -37,11 +39,11 @@ import 'shared/auth/repositories/auth_repository_interface.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        $ImagemController,
         $UsuariosStore,
         $UsuariosRepository,
         $CadastroController,
         $MenuController,
-        $CarrinhoController,
         $CarrinhoTotalController,
         $CarrinhoListaProdutosController,
         $CarrinhoListaProdutosController,
@@ -50,6 +52,7 @@ class AppModule extends MainModule {
         Bind<IAuthRepository>((i) => AuthRepository()),
         Bind((i) => CarrinhoRepository(i.get<CustomDio>())),
         Bind((i) => ProdutosRepository(i.get<CustomDio>())),
+        Bind((i) => ImagemWidget()),
         Bind((i) => AuthController()),
         Bind((i) => ProdutoController()),
         Bind((i) => ProdutosController()),
@@ -75,7 +78,7 @@ class AppModule extends MainModule {
             module: EsqueceuSenhaModule(), transition: TransitionType.downToUp),
         ModularRouter('/configuracoes',
             module: ConfiguracoesModule(), transition: TransitionType.fadeIn),
-        ModularRouter('/vendas',
+        ModularRouter('/vender',
             module: VenderModule(), transition: TransitionType.fadeIn),
       ];
 

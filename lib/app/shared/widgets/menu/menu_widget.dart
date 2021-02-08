@@ -65,7 +65,8 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             title: Text('Vender/Alugar'),
             onTap: () {
               Modular.to.pushNamedAndRemoveUntil(
-                  '/vendas', ModalRoute.withName('/home'));
+                  '/vender', ModalRoute.withName('/home'),
+                  arguments: {'mensagem': ''});
             },
             selected: widget.tile == 3,
           ),

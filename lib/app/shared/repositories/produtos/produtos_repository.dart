@@ -41,4 +41,15 @@ class ProdutosRepository extends Disposable {
       print(e);
     }
   }
+
+  Future insertProduto({produto, categoria}) async {
+    try {
+      var response = await dio.client.post(
+          '/produto/insereAtualizaProdutoUsuario',
+          data: {'produto': produto, 'categoria': categoria});
+      print(response.data);
+    } on DioError catch (e) {
+      print(e);
+    }
+  }
 }

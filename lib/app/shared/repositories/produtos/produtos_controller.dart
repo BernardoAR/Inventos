@@ -23,4 +23,10 @@ abstract class _ProdutosControllerBase with Store {
   Future getListaProdutosUsuario(String uid) async {
     return await _produtosRepository.getPostUsuario(uid: uid);
   }
+
+  @action
+  Future inserirProduto(dynamic produto, dynamic categoria) async {
+    return await _produtosRepository.insertProduto(
+        produto: produto, categoria: categoria);
+  }
 }

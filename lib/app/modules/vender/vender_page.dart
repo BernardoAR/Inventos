@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:inventos/app/shared/widgets/alerta/alerta_widget.dart';
 import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget.dart';
 import 'package:inventos/app/shared/widgets/menu/menu_widget.dart';
 import 'package:mobx/mobx.dart';
@@ -8,7 +9,8 @@ import 'vender_controller.dart';
 import 'package:inventos/app/shared/Constants/constants.dart' as constants;
 
 class VenderPage extends StatefulWidget {
-  const VenderPage({Key key}) : super(key: key);
+  final String mensagem;
+  const VenderPage({Key key, this.mensagem = ''}) : super(key: key);
 
   @override
   _VenderPageState createState() => _VenderPageState();
@@ -19,8 +21,21 @@ class _VenderPageState extends ModularState<VenderPage, VenderController> {
   //use 'controller' variable to access controller
   void initState() {
     super.initState();
+
     disposer = autorun((_) {
       controller.listarProdutos();
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.mensagem != null && widget.mensagem.isNotEmpty) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertaWidget(
+                titulo: 'Aviso',
+                conteudo: widget.mensagem,
+              );
+            });
+      }
     });
   }
 
@@ -87,7 +102,7 @@ class _VenderPageState extends ModularState<VenderPage, VenderController> {
                 width: double.infinity,
                 child: RaisedButton(
                   onPressed: () {
-                    Modular.to.pushNamed("/vender/anuncio");
+                    Modular.to.pushNamed("/vender/novo");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
