@@ -18,7 +18,6 @@ class ProdutosRepository extends Disposable {
 
   /// Método utilizado para pegar os produtos
   Future getPost({nome}) async {
-    print('alo');
     try {
       final response =
           await dio.client.post('/produto/pegaprodutos', data: {'nome': nome});

@@ -31,16 +31,16 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  firebase_auth: ^0.20.0+1
   circular_profile_avatar: ^1.0.8
   flutter_launcher_icons: ^0.8.1
   flutter_signin_button: ^1.1.0
   http: ^0.12.2
-  firebase_core: ^0.5.2+1
+  firebase_core: '0.7.0'
   dio: ^3.0.10
   flutter_mobx: ^1.1.0+2
   mobx: ^1.2.1+4
   flutter_modular: ^2.0.1
-  firebase_auth: ^0.18.3+1
   google_sign_in: ^4.5.6
   flutter:
     sdk: flutter

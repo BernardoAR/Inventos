@@ -9,26 +9,26 @@ part of 'carrinho_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CarrinhoModel on _CarrinhoModelBase, Store {
-  Computed<int> _$quantidadeComputed;
+  Computed<int> _$quantidadesComputed;
 
   @override
-  int get quantidade =>
-      (_$quantidadeComputed ??= Computed<int>(() => super.quantidade,
-              name: '_CarrinhoModelBase.quantidade'))
+  int get quantidades =>
+      (_$quantidadesComputed ??= Computed<int>(() => super.quantidades,
+              name: '_CarrinhoModelBase.quantidades'))
           .value;
 
-  final _$_quantidadeAtom = Atom(name: '_CarrinhoModelBase._quantidade');
+  final _$quantidadeAtom = Atom(name: '_CarrinhoModelBase.quantidade');
 
   @override
-  int get _quantidade {
-    _$_quantidadeAtom.reportRead();
-    return super._quantidade;
+  int get quantidade {
+    _$quantidadeAtom.reportRead();
+    return super.quantidade;
   }
 
   @override
-  set _quantidade(int value) {
-    _$_quantidadeAtom.reportWrite(value, super._quantidade, () {
-      super._quantidade = value;
+  set quantidade(int value) {
+    _$quantidadeAtom.reportWrite(value, super.quantidade, () {
+      super.quantidade = value;
     });
   }
 
@@ -60,7 +60,8 @@ mixin _$CarrinhoModel on _CarrinhoModelBase, Store {
   @override
   String toString() {
     return '''
-quantidade: ${quantidade}
+quantidade: ${quantidade},
+quantidades: ${quantidades}
     ''';
   }
 }

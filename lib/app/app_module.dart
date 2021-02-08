@@ -1,6 +1,8 @@
+import 'shared/store/usuarios_store.dart';
 import 'package:dio/dio.dart';
 import 'package:inventos/app/modules/configuracoes/configuracoes_module.dart';
 import 'package:inventos/app/modules/esqueceu_senha/esqueceu_senha_module.dart';
+import 'package:inventos/app/shared/repositories/carrinho/carrinho_repository.dart';
 import 'shared/repositories/usuarios/usuarios_repository.dart';
 import 'package:inventos/app/modules/cadastro/cadastro_module.dart';
 import 'package:inventos/app/shared/repositories/produtos/produtos_controller.dart';
@@ -33,6 +35,7 @@ import 'shared/auth/repositories/auth_repository_interface.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
+        $UsuariosStore,
         $UsuariosRepository,
         $CadastroController,
         $MenuController,
@@ -43,6 +46,7 @@ class AppModule extends MainModule {
         $SplashController,
         $AppController,
         Bind<IAuthRepository>((i) => AuthRepository()),
+        Bind((i) => CarrinhoRepository(i.get<CustomDio>())),
         Bind((i) => ProdutosRepository(i.get<CustomDio>())),
         Bind((i) => AuthController()),
         Bind((i) => ProdutoController()),

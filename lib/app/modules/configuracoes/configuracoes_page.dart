@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget.dart';
-import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget_pesquisa.dart';
 import 'package:inventos/app/shared/widgets/menu/menu_widget.dart';
 import 'configuracoes_controller.dart';
 
