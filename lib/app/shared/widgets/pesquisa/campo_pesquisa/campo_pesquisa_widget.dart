@@ -27,7 +27,7 @@ class _CampoPesquisaWidgetState
           filled: true,
           fillColor: Colors.white), // Added this
       style: TextStyle(color: Colors.grey[800], fontSize: 16.0, height: 1),
-      onChanged: (query) => controller.atualizaPesquisa(query),
+      onSubmitted: (query) => controller.atualizaPesquisa(query),
     );
   }
 }

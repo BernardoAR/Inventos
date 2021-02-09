@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:inventos/app/modules/home/home_controller.dart';
 import 'package:mobx/mobx.dart';
 part 'pesquisa_controller.g.dart';
 
@@ -6,6 +8,7 @@ class PesquisaController = _PesquisaControllerBase with _$PesquisaController;
 
 abstract class _PesquisaControllerBase with Store {
   TextEditingController get pesquisaQueryController => TextEditingController();
+  HomeController homeController = Modular.get();
   @observable
   bool _estaPesquisando = false;
 
@@ -32,6 +35,7 @@ abstract class _PesquisaControllerBase with Store {
   @action
   void atualizaPesquisa(String novaPesquisa) {
     _pesquisa = novaPesquisa;
+    homeController.listarProdutosWhere(novaPesquisa);
   }
 
   @action
