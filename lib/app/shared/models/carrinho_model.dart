@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:inventos/app/shared/models/produto_model.dart';
 import 'package:inventos/app/shared/models/usuario_model.dart';
 import 'package:mobx/mobx.dart';

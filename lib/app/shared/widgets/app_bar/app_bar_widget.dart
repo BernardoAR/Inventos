@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/Constants/constants_gradient.dart'
     as constantsGradient;
-import 'package:inventos/app/shared/widgets/pesquisa/pesquisa_controller.dart';
 
 class AppBarWidget extends StatefulWidget with PreferredSizeWidget {
   final String titulo;
@@ -15,8 +13,7 @@ class AppBarWidget extends StatefulWidget with PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(56.0);
 }
 
-class _AppBarWidgetState
-    extends ModularState<AppBarWidget, PesquisaController> {
+class _AppBarWidgetState extends State<AppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(

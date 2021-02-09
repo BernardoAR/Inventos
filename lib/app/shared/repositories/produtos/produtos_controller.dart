@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:inventos/app/shared/models/produto_model.dart';
 import 'package:inventos/app/shared/repositories/produtos/produtos_repository.dart';
 import 'package:mobx/mobx.dart';
 part 'produtos_controller.g.dart';

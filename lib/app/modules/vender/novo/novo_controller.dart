@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:inventos/app/shared/models/produto_model.dart';
-import 'package:inventos/app/shared/models/produto_tipo_model.dart';
 import 'package:inventos/app/shared/repositories/produtos/produtos_controller.dart';
 import 'package:inventos/app/shared/store/usuarios_store.dart';
 import 'package:inventos/app/shared/widgets/imagem/imagem_controller.dart';

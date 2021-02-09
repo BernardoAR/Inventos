@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:inventos/app/shared/auth/auth_controller.dart';
-import 'package:inventos/app/shared/models/endereco_model.dart';
 import 'package:inventos/app/shared/repositories/endereco/endereco_repository.dart';
 import 'package:inventos/app/shared/store/usuarios_store.dart';
 import 'package:mobx/mobx.dart';

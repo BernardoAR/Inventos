@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget.dart';
 import 'package:inventos/app/shared/Constants/constants.dart' as constants;
+import 'package:inventos/app/shared/widgets/menu/menu_widget.dart';
 import 'enderecos_controller.dart';
 
 class EnderecosPage extends StatefulWidget {
@@ -28,6 +29,9 @@ class _EnderecosPageState
     return Scaffold(
         appBar: AppBarWidget(
           titulo: 'Endereço',
+        ),
+        drawer: MenuWidget(
+          tile: 4,
         ),
         body: SingleChildScrollView(
             child: Container(

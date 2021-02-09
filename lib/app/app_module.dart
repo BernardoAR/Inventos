@@ -1,3 +1,5 @@
+import 'package:inventos/app/modules/home/home_controller.dart';
+
 import 'shared/repositories/endereco/endereco_repository.dart';
 import 'package:inventos/app/shared/widgets/imagem/imagem_widget.dart';
 
@@ -60,6 +62,7 @@ class AppModule extends MainModule {
         Bind((i) => ProdutosController()),
         Bind((i) => CarrinhoStore()),
         Bind((i) => PesquisaController()),
+        Bind((i) => HomeController()),
         Bind((i) => CustomDio(i.get<Dio>())),
         Bind((i) => Dio()),
       ];

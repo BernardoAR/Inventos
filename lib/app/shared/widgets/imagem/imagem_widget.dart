@@ -27,11 +27,15 @@ class _ImagemWidgetState extends State<ImagemWidget> {
               ? InkWell(
                   onTap: widget.imagemController.pegaImagem,
                   child: widget.imagemController.online == false
-                      ? Image.file(
-                          widget.imagemController.imagem,
-                          height: mediaQuery.size.height * 0.35,
-                          width: mediaQuery.size.width * 0.8,
-                        )
+                      ? (widget.imagemController.imagem != null)
+                          ? Image.file(
+                              widget.imagemController.imagem,
+                              height: mediaQuery.size.height * 0.35,
+                              width: mediaQuery.size.width * 0.8,
+                            )
+                          : RaisedButton(
+                              onPressed: widget.imagemController.pegaImagem,
+                              child: Icon(Icons.add_a_photo))
                       : Image.network(
                           widget.imagemController.url,
                           height: mediaQuery.size.height * 0.35,
