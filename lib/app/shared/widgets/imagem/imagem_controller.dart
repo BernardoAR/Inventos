@@ -12,15 +12,23 @@ part 'imagem_controller.g.dart';
 class ImagemController = _ImagemControllerBase with _$ImagemController;
 
 abstract class _ImagemControllerBase with Store {
+  final String caminho;
   @observable
-  File _imagem;
+  File imagem;
   @observable
-  String _url;
+  String url;
+  @observable
+  bool online = false;
+
   final picker = ImagePicker();
+
+  _ImagemControllerBase({this.caminho});
+
   @action
   Future pegaImagem() async {
+    this.online = false;
     var imagemPegada = await picker.getImage(source: ImageSource.gallery);
-    if (imagemPegada != null) _imagem = File(imagemPegada.path);
+    if (imagemPegada != null) imagem = File(imagemPegada.path);
   }
 
   @action
@@ -28,19 +36,16 @@ abstract class _ImagemControllerBase with Store {
     try {
       // Make random image name.
       String nome = randomAlphaNumeric(16);
-      String localizacao = 'uploads/produtos/$nome.jpg';
+      String localizacao = '${this.caminho}/$nome.jpg';
       // Upload image to firebase.
       var task = await firebase_storage.FirebaseStorage.instance
           .ref(localizacao)
-          .putFile(_imagem);
-      _url = await task.ref.getDownloadURL();
+          .putFile(imagem);
+      url = await task.ref.getDownloadURL();
     } on FirebaseException catch (e) {
       print(e.code);
     } catch (e) {
       print(e.message);
     }
   }
-
-  get url => _url;
-  get imagem => _imagem;
 }

@@ -29,7 +29,9 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
           child: Form(
               key: form,
               child: Column(children: [
-                ImagemWidget(),
+                ImagemWidget(
+                  imagemController: controller.imagemController,
+                ),
                 SizedBox(height: mediaQuery.size.height * 0.02),
                 TextFormField(
                   controller: controller.tituloController,
@@ -39,7 +41,7 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
                       labelText: 'Título',
                       filled: true,
                       fillColor: Colors.white,
-                      errorStyle: TextStyle(color: Colors.white)),
+                      errorStyle: TextStyle(color: Colors.red)),
                 ),
                 SizedBox(height: mediaQuery.size.height * 0.02),
                 TextFormField(
@@ -50,7 +52,7 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
                       labelText: 'Descrição',
                       filled: true,
                       fillColor: Colors.white,
-                      errorStyle: TextStyle(color: Colors.white)),
+                      errorStyle: TextStyle(color: Colors.red)),
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                 ),
@@ -62,7 +64,7 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
                       labelText: 'Quantidade em Estoque',
                       filled: true,
                       fillColor: Colors.white,
-                      errorStyle: TextStyle(color: Colors.white)),
+                      errorStyle: TextStyle(color: Colors.red)),
                   keyboardType: TextInputType.numberWithOptions(
                       signed: false, decimal: false),
                 ),
@@ -75,7 +77,7 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
                       labelText: 'Preço Unitário',
                       filled: true,
                       fillColor: Colors.white,
-                      errorStyle: TextStyle(color: Colors.white)),
+                      errorStyle: TextStyle(color: Colors.red)),
                   keyboardType: TextInputType.numberWithOptions(
                       signed: false, decimal: true),
                 ),
@@ -88,7 +90,7 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
                       labelText: 'Desconto por Unidade',
                       filled: true,
                       fillColor: Colors.white,
-                      errorStyle: TextStyle(color: Colors.white)),
+                      errorStyle: TextStyle(color: Colors.red)),
                   keyboardType: TextInputType.numberWithOptions(
                       signed: false, decimal: true),
                 ),
@@ -100,7 +102,7 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
                       labelText: 'Categoria',
                       filled: true,
                       fillColor: Colors.white,
-                      errorStyle: TextStyle(color: Colors.white)),
+                      errorStyle: TextStyle(color: Colors.red)),
                 ),
                 SizedBox(height: mediaQuery.size.height * 0.02),
                 DropdownButton<String>(
@@ -130,7 +132,7 @@ class _NovoPageState extends ModularState<NovoPage, NovoController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Cadastrar Produto/Serviço",
+                        "CADASTRAR PRODUTO/SERVIÇO",
                         style: TextStyle(color: Colors.white),
                       )
                     ],

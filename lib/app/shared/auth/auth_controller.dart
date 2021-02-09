@@ -65,8 +65,19 @@ abstract class _AuthControllerBase with Store {
   }
 
   @action
+  Future estaLogadoGoogle() async {
+    return await _authRepository.estaLogadoGoogle();
+  }
+
+  @action
   Future loginWithGoogle() async {
     user = await _authRepository.getGoogleLogin();
+  }
+
+  @action
+  Future atualizaPerfil({url, nome, email, senha, novaSenha}) async {
+    return _authRepository.updateProfile(
+        url: url, nome: nome, email: email, senha: senha, novaSenha: novaSenha);
   }
 
   @action

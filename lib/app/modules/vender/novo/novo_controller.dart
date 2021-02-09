@@ -13,7 +13,8 @@ class NovoController = _NovoControllerBase with _$NovoController;
 
 abstract class _NovoControllerBase with Store {
   ProdutosController produto = Modular.get();
-  ImagemController imagemController = Modular.get();
+  ImagemController imagemController =
+      ImagemController(caminho: 'uploads/produtos');
   final TextEditingController tituloController = TextEditingController();
   final TextEditingController descricaoController = TextEditingController();
   final TextEditingController quantidadeController = TextEditingController();

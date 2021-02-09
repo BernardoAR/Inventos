@@ -43,7 +43,7 @@ class _VenderPageState extends ModularState<VenderPage, VenderController> {
   Widget build(BuildContext context) {
     return Scaffold(
         drawer: MenuWidget(
-          tile: 1,
+          tile: 3,
         ),
         appBar: AppBarWidget(
           titulo: 'Painel de Venda',

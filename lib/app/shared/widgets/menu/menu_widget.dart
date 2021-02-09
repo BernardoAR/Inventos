@@ -75,7 +75,8 @@ class _MenuWidgetState extends ModularState<MenuWidget, MenuController> {
             title: Text('Configurações'),
             onTap: () {
               Modular.to.pushNamedAndRemoveUntil(
-                  '/configuracoes', ModalRoute.withName('/home'));
+                  '/configuracoes', ModalRoute.withName('/home'),
+                  arguments: {'mensagem': ''});
             },
             selected: widget.tile == 4,
           ),

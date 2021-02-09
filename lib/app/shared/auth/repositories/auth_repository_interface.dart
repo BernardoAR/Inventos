@@ -6,4 +6,6 @@ abstract class IAuthRepository {
   Future<String> getToken();
   Future resetPassword({email});
   Future getLogOut();
+  Future estaLogadoGoogle();
+  Future updateProfile({url, nome, email, senha, novaSenha});
 }

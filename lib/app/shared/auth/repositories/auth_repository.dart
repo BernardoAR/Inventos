@@ -9,6 +9,7 @@ import 'package:inventos/app/shared/repositories/usuarios/usuarios_repository.da
 class AuthRepository implements IAuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final UsuariosRepository _usuariosRepository = Modular.get();
+  GoogleSignIn _googleSignIn = GoogleSignIn();
   @override
   Future createEmailPasswordLogin({email, senha, nome}) async {
     // Verifica se deu algum erro
@@ -37,6 +38,55 @@ class AuthRepository implements IAuthRepository {
     return {'temErro': temErro, 'texto': texto};
   }
 
+  Future estaLogadoGoogle() async {
+    return await _googleSignIn.isSignedIn();
+  }
+
+  Future updateProfile({url, nome, email, senha, novaSenha}) async {
+    print('BBBBBBBBBBBB');
+    print({url, nome, email, senha, novaSenha});
+    // Verifica se deu algum erro
+    bool temErro = false;
+    String texto = '';
+    try {
+      bool logadoGoogle = await _googleSignIn.isSignedIn();
+      if (!logadoGoogle) {
+        EmailAuthCredential credential =
+            EmailAuthProvider.credential(email: email, password: senha);
+        await _auth.currentUser.reauthenticateWithCredential(credential);
+        // Verifica se mudou o e-mail caso sim, atualiza;
+        if (_auth.currentUser.email != email && email != null) {
+          _auth.currentUser.updateEmail(email);
+          // Envia o e-mail de verificação
+          await _auth.currentUser.sendEmailVerification();
+        }
+      }
+      // Verifica se mudou a foto do perfil, caso sim, atualiza;
+      print(_auth.currentUser.photoURL != url && url != null);
+      if (_auth.currentUser.photoURL != url && url != null) {
+        await _auth.currentUser.updateProfile(photoURL: url);
+      }
+      // Verifica se mudou o nome, caso sim, atualiza
+      if (_auth.currentUser.displayName != nome && nome != null) {
+        await _auth.currentUser.updateProfile(displayName: nome);
+      }
+
+      // Cadastra ou atualiza o usuário
+      await _usuariosRepository.insereAtualizaUsuario(UsuarioModel(
+          uid: _auth.currentUser.uid,
+          nome: nome,
+          tipoUsuario: TipoUsuarioModel(id: 1)));
+    } on FirebaseAuthException catch (e) {
+      temErro = true;
+      if (e.code == 'weak-password') {
+        texto += 'A senha é muito fraca.';
+      } else if (e.code == 'email-already-in-use') {
+        texto += 'Uma conta já existe com esse email.';
+      }
+    }
+    return {'temErro': temErro, 'texto': texto};
+  }
+
   @override
   Future getEmailPasswordLogin({email, senha}) async {
     return await _auth.signInWithEmailAndPassword(
@@ -46,7 +96,7 @@ class AuthRepository implements IAuthRepository {
   @override
   Future getGoogleLogin() async {
     // Trigger the authentication flow
-    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication googleAuth =

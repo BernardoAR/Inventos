@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:inventos/app/shared/widgets/alerta/alerta_widget.dart';
 import 'package:inventos/app/shared/widgets/app_bar/app_bar_widget.dart';
 import 'package:inventos/app/shared/widgets/menu/menu_widget.dart';
 import 'configuracoes_controller.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
   final String title;
-  const ConfiguracoesPage({Key key, this.title = "Configuracoes"})
+  final String mensagem;
+  const ConfiguracoesPage(
+      {Key key, this.title = "Configuracoes", this.mensagem = ''})
       : super(key: key);
 
   @override
@@ -15,11 +18,27 @@ class ConfiguracoesPage extends StatefulWidget {
 
 class _ConfiguracoesPageState
     extends ModularState<ConfiguracoesPage, ConfiguracoesController> {
-  //use 'controller' variable to access controller
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.mensagem != null && widget.mensagem.isNotEmpty) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertaWidget(
+                titulo: 'Aviso',
+                conteudo: widget.mensagem,
+              );
+            });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+
     return Scaffold(
         appBar: AppBarWidget(
           titulo: 'Configurações',
@@ -35,14 +54,14 @@ class _ConfiguracoesPageState
               leading: Icon(Icons.account_circle),
               title: Text('Meu Perfil'),
               onTap: () {
-                Modular.to.pushNamed('/perfil');
+                Modular.to.pushNamed('/configuracoes/perfil');
               },
             ),
             ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Meus Endereços'),
+              leading: Icon(Icons.apartment),
+              title: Text('Meu Endereço'),
               onTap: () {
-                Modular.to.pushNamed('/enderecos');
+                Modular.to.pushNamed('/configuracoes/enderecos');
               },
             ),
           ],

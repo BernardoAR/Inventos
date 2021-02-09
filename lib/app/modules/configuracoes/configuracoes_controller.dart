@@ -7,12 +7,4 @@ part 'configuracoes_controller.g.dart';
 class ConfiguracoesController = _ConfiguracoesControllerBase
     with _$ConfiguracoesController;
 
-abstract class _ConfiguracoesControllerBase with Store {
-  @observable
-  int value = 0;
-
-  @action
-  void increment() {
-    value++;
-  }
-}
+abstract class _ConfiguracoesControllerBase with Store {}
