@@ -28,17 +28,16 @@ class ProdutoModel {
       this.tipoProduto});
   factory ProdutoModel.fromJson(Map<String, dynamic> json) {
     return ProdutoModel(
-        id: int.parse(json['id']),
-        ativo: int.parse(json['ativo']),
+        id: int.parse(json['id'].toString()),
+        ativo: int.parse(json['ativo'].toString()),
         descricao: json['descricao'],
-        precoUnitario: double.parse(json['precoUnitario']),
-        desconto: double.parse(json['desconto']),
-        quantidade: int.parse(json['quantidade']),
+        precoUnitario: double.parse(json['precoUnitario'].toString()),
+        desconto: double.parse(json['desconto'].toString()),
+        quantidade: int.parse(json['quantidade'].toString()),
         titulo: json['titulo'],
         url: json['url'],
         usuario: UsuarioModel.fromJson(json['usuario']),
-        tipoProduto:
-            ProdutoTipoModel.fromJson(jsonDecode(json['produtoTipo'])));
+        tipoProduto: ProdutoTipoModel.fromJson(json['produtoTipo']));
   }
 
   Map<String, dynamic> toJson() {

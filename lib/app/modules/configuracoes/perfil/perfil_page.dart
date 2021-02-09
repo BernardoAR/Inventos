@@ -70,7 +70,7 @@ class _PerfilPageState extends ModularState<PerfilPage, PerfilController> {
                 ),
                 Visibility(
                   child: TextFormField(
-                    controller: controller.novaSenhaController,
+                    controller: controller.senhaController,
                     validator: controller.validaSenha,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:inventos/app/shared/widgets/imagem/imagem_controller.dart';
 
 class ImagemWidget extends StatefulWidget {
@@ -13,7 +13,7 @@ class ImagemWidget extends StatefulWidget {
   _ImagemWidgetState createState() => _ImagemWidgetState();
 }
 
-class _ImagemWidgetState extends ModularState<ImagemWidget, ImagemController> {
+class _ImagemWidgetState extends State<ImagemWidget> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);

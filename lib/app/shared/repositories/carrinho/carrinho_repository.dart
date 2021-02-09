@@ -45,8 +45,10 @@ class CarrinhoRepository extends Disposable {
   // Método utilizado para atualizar os produtos no carrinho
   Future remove(CarrinhoModel carrinhoModel) async {
     try {
-      await dio.client.post('/carrinho/removeProdutosCarrinho',
-          data: {'carrinho': carrinhoModel.toJson()});
+      var response = await dio.client.post('/carrinho/removeProdutosCarrinho',
+          data: {'carrinho': carrinhoModel.toJson(), 'usuario': usuario});
+      print(response.data);
+      return response.statusCode;
     } on DioError catch (e) {
       print(e);
     }

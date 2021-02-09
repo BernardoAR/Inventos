@@ -10,17 +10,19 @@ abstract class _CarrinhoModelBase with Store {
   final UsuarioModel usuario;
   final ProdutoModel produto;
   @observable
-  int quantidade;
+  int quantidade = 1;
 
   _CarrinhoModelBase({this.usuario, this.produto, this.quantidade}) {
-    this.quantidade = 1;
+    if (this.quantidade == null) {
+      this.quantidade = 1;
+    }
   }
 
   fromJson(Map<String, dynamic> json) {
     return CarrinhoModel(
         quantidade: int.parse(json['quantidade']),
         usuario: UsuarioModel.fromJson(json['usuario']),
-        produto: ProdutoModel.fromJson(jsonDecode(json['produto'])));
+        produto: ProdutoModel.fromJson(json['produto']));
   }
 
   Map<String, dynamic> toJson() {
@@ -36,11 +38,15 @@ abstract class _CarrinhoModelBase with Store {
 
   @action
   void adicionar() {
-    quantidade++;
+    if (quantidade != produto.quantidade) {
+      quantidade++;
+    }
   }
 
   @action
   void remover() {
-    quantidade--;
+    if (quantidade != 1) {
+      quantidade--;
+    }
   }
 }

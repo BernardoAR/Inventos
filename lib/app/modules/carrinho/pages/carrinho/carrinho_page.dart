@@ -17,6 +17,11 @@ class CarrinhoPage extends StatefulWidget {
 class _CarrinhoPageState
     extends ModularState<CarrinhoPage, CarrinhoController> {
   //use 'controller' variable to access controller
+  @override
+  void dispose() {
+    super.dispose();
+    controller.atualizarProdutosCarrinho();
+  }
 
   @override
   Widget build(BuildContext context) {

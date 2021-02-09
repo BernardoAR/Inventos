@@ -12,6 +12,16 @@ abstract class _CarrinhoStoreBase with Store {
   var produtosNoCarrinho = ObservableList<CarrinhoModel>();
   final UsuariosStore _usuarioStore = Modular.get();
   final CarrinhoRepository _carrinhoRepository = Modular.get();
+  _CarrinhoStoreBase() {
+    colocaProdutos();
+  }
+  Future colocaProdutos() async {
+    var carrinhos = await _carrinhoRepository.getPost();
+    for (var i = 0; i < carrinhos.length; i++) {
+      produtosNoCarrinho.add(carrinhos[i]);
+    }
+  }
+
   void adicionarProdutoCarrinho(ProdutoModel produtoModel) {
     // Verifica se tem um índice na lista em relação ao produto, para adicionar mais uma quantidade caso exista
     var index = produtosNoCarrinho.indexWhere(
@@ -19,23 +29,30 @@ abstract class _CarrinhoStoreBase with Store {
     // Se possuir, busca o elemento e adiciona
     if (index >= 0) {
       produtosNoCarrinho.elementAt(index).adicionar();
-      atualizaProdutoCarrinho(produtosNoCarrinho.elementAt(index));
       // Caso não exista, adiciona o produto no carrinho
     } else {
       produtosNoCarrinho.add(
           CarrinhoModel(produto: produtoModel, usuario: _usuarioStore.usuario));
-      atualizaProdutoCarrinho(produtosNoCarrinho.elementAt(0));
     }
   }
 
-  atualizaProdutoCarrinho(CarrinhoModel carrinhoModel) {
-    _carrinhoRepository.atualiza(carrinhoModel);
+  // Atualiza\ todos os produtos do carrinho
+  atualizaProdutoCarrinho() {
+    for (var i = 0; i < produtosNoCarrinho.length; i++) {
+      _carrinhoRepository.atualiza(produtosNoCarrinho.elementAt(i));
+    }
+  }
+
+  removeProdutoCarrinho(CarrinhoModel carrinhoModel) {
+    _carrinhoRepository.remove(carrinhoModel);
   }
 
   void removerProdutosNoCarrinho(ProdutoModel produtoModel) {
     // Verifica se tem um índice na lista em relação ao produto, para adicionar mais uma quantidade caso exista
     var index = produtosNoCarrinho.indexWhere(
         (carrinhoModel) => carrinhoModel.produto.id == produtoModel.id);
+    // Remove o produto
+    removeProdutoCarrinho(produtosNoCarrinho.elementAt(index));
     // Se possuir, busca o elemento e deleta
     produtosNoCarrinho.removeAt(index);
   }
