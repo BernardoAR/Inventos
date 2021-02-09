@@ -7,7 +7,7 @@ part of 'imagem_controller.dart';
 // **************************************************************************
 
 final $ImagemController = BindInject(
-  (i) => ImagemController(),
+  (i) => ImagemController(caminho: i<String>()),
   singleton: true,
   lazy: true,
 );

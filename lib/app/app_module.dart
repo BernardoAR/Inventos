@@ -1,3 +1,4 @@
+import 'shared/repositories/endereco/endereco_repository.dart';
 import 'package:inventos/app/shared/widgets/imagem/imagem_widget.dart';
 
 import 'shared/widgets/imagem/imagem_controller.dart';
@@ -50,6 +51,7 @@ class AppModule extends MainModule {
         $SplashController,
         $AppController,
         Bind<IAuthRepository>((i) => AuthRepository()),
+        Bind((i) => EnderecoRepository(i.get<CustomDio>())),
         Bind((i) => CarrinhoRepository(i.get<CustomDio>())),
         Bind((i) => ProdutosRepository(i.get<CustomDio>())),
         Bind((i) => ImagemWidget()),

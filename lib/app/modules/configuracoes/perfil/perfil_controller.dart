@@ -13,7 +13,6 @@ abstract class _PerfilControllerBase with Store {
   AuthController auth = Modular.get();
   ImagemController imagemController =
       ImagemController(caminho: 'uploads/fotoPerfil');
-
   final TextEditingController nomeController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();

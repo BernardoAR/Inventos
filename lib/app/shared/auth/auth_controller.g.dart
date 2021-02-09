@@ -74,12 +74,38 @@ mixin _$AuthController on _AuthControllerBase, Store {
         .run(() => super.loginWithEmail(email: email, senha: senha));
   }
 
+  final _$estaLogadoGoogleAsyncAction =
+      AsyncAction('_AuthControllerBase.estaLogadoGoogle');
+
+  @override
+  Future<dynamic> estaLogadoGoogle() {
+    return _$estaLogadoGoogleAsyncAction.run(() => super.estaLogadoGoogle());
+  }
+
   final _$loginWithGoogleAsyncAction =
       AsyncAction('_AuthControllerBase.loginWithGoogle');
 
   @override
   Future<dynamic> loginWithGoogle() {
     return _$loginWithGoogleAsyncAction.run(() => super.loginWithGoogle());
+  }
+
+  final _$atualizaPerfilAsyncAction =
+      AsyncAction('_AuthControllerBase.atualizaPerfil');
+
+  @override
+  Future<dynamic> atualizaPerfil(
+      {dynamic url,
+      dynamic nome,
+      dynamic email,
+      dynamic senha,
+      dynamic novaSenha}) {
+    return _$atualizaPerfilAsyncAction.run(() => super.atualizaPerfil(
+        url: url,
+        nome: nome,
+        email: email,
+        senha: senha,
+        novaSenha: novaSenha));
   }
 
   final _$_AuthControllerBaseActionController =
